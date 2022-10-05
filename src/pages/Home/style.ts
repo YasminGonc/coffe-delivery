@@ -3,11 +3,71 @@ import styled from 'styled-components'
 export const HomeContainer = styled.div`
     padding: 0 1rem; //padding lateral para o mobile
 
+    h2 {
+        padding: 2rem 0;
+        color: var(--baseSubtitle);
+        font-family: 'Baloo 2', cursive;
+    }
+
     @media screen and (min-width: 768px){
         padding: 0;
     }
 
     @media screen and (min-width: 1024px){
-        //padding: 0;
+        
     }
+
+    @media screen and (min-width: 1440px) {
+        h2 {
+            font-size: 2rem;
+            padding: 0;
+        }
+    }
+`
+export const MenuContainer = styled.div`
+`
+export const CoffeeContainer = styled.div`
+    background-color: var(--baseCard);
+    border-radius: 6px 32px 6px 32px;
+    font-family: 'Roboto', sans-serif;
+
+    margin: 0 1.5rem 0 1.5rem;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+        margin-top: -2.2rem;
+    }
+`
+export const Tag = styled.span`
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.625rem;
+    color: var(--yellowDark);
+
+    margin: 1rem 0 1.25rem 0;
+    padding: 0.25rem 0.5rem;
+    background-color: var(--yellowLight);
+    border-radius: 100px;
+`
+export const Title = styled.h3`
+    font-family: 'Baloo 2', cursive;
+    color: var(--baseTitle);
+    font-weight: 700;
+    font-size: 1.25rem;
+`
+export const Description = styled.p`
+    color: var(--baseLabel);
+    font-size: 0.875rem;
+    text-align: center;
+
+    margin: 0.5rem 0 1rem 0;
+`
+export const ShoppContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `
