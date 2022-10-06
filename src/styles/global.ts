@@ -37,6 +37,8 @@ export const GlobalStyle = createGlobalStyle`
         --baseCard: #F3F2F2;
         --background: #FAFAFA;
         --white: #FFFFFF;
+
+        --warning: #EF3E36;
     }
 
 `
