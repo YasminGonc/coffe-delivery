@@ -5,6 +5,29 @@ export const SuccessContainer = styled.div`
 
     display: flex;
     flex-direction: column;
+
+    @media screen and (min-width: 768px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+            'textTitle .'
+            'deliveryInfo img'
+        ;
+
+        img {
+            grid-area: img;
+            width: 90%;
+            align-self: flex-end;
+            justify-self: center;
+        }
+    }
+
+    @media screen and (min-width: 1440px) {
+        img {
+            width: 70%;
+        }
+    }
+    
 `
 export const TitleContainer = styled.div`
     h2 {
@@ -19,6 +42,10 @@ export const TitleContainer = styled.div`
         color: var(--baseSubtitle);
         font-size: 1rem; //1.25rem no desktop
     }
+
+    @media screen and (min-width: 768px) {
+        grid-area: textTitle;
+    }
 `
 export const DeliveryInfo = styled.div`
     padding: 2rem;
@@ -32,6 +59,7 @@ export const DeliveryInfo = styled.div`
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 1.5rem;
 
     &::before {
@@ -45,6 +73,11 @@ export const DeliveryInfo = styled.div`
         margin: -1px;
         border-radius: inherit;
         background: linear-gradient(135deg, #DBAC2C, #8047F8);
+    }
+
+    @media screen and (min-width: 768px) {
+        grid-area: deliveryInfo;
+        margin: 1.5rem 0 0 0;
     }
 `
 export const Info = styled.div`
