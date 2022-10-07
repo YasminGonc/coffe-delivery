@@ -1,5 +1,17 @@
 import styled from 'styled-components'
 
+export const OrderContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    h2 {
+        font-size: 1.125rem;
+        font-family: 'Baloo 2', cursive;
+        font-weight: 700;
+        color: var(--baseSubtitle);
+    }
+`
 export const AddressContainer = styled.div`
     background-color: var(--baseCard);
     border-radius: 6px;

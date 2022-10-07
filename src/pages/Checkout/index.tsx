@@ -1,14 +1,13 @@
 import { CheckoutContainer } from './style'
 
 import { Address } from './componentes/Address'
-import { PaymentMethod } from './componentes/PaymentMethod'
+import { Cart } from './componentes/Cart'
 
 export function Checkout() {
     return(
-        <CheckoutContainer>
-            <h2>Complete seu pedido</h2>
+        <CheckoutContainer >
             <Address />
-            <PaymentMethod />
+            <Cart />
         </CheckoutContainer>
     )
 }

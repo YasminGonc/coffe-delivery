@@ -1,8 +1,9 @@
-import { ButtonsContainer, CoffeeContainer, Description, HomeContainer, IconContainer, MenuContainer, QuantityContainer, ShoppContainer, Tag, Title } from './style'
+import { CoffeeContainer, Description, HomeContainer, IconContainer, MenuContainer, QuantityContainer, ShoppContainer, Tag, Title } from './style'
 
 import { Banner } from './components/Banner'
 import coffee from '../../assets/arabe.png'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { ButtonAddRemove } from '../../components/ButtonAddRemove'
 
 export function Home() {
     return(
@@ -23,15 +24,7 @@ export function Home() {
                     <ShoppContainer>
                         <p><span>R$</span>9,90</p>
                         <QuantityContainer>
-                            <ButtonsContainer>
-                                <button>
-                                    <Minus width={14}/>
-                                </button>
-                                <p>1</p>
-                                <button>
-                                    <Plus width={14} />
-                                </button>
-                            </ButtonsContainer>
+                            <ButtonAddRemove quantity={1}/>
 
                             <IconContainer title='Adicionar ao carrinho'>
                                 <ShoppingCart weight='fill'/>
@@ -51,15 +44,7 @@ export function Home() {
                     <ShoppContainer>
                         <p><span>R$</span>9,90</p>
                         <QuantityContainer>
-                            <ButtonsContainer>
-                                <button>
-                                    <Minus width={14}/>
-                                </button>
-                                <p>1</p>
-                                <button>
-                                    <Plus width={14} />
-                                </button>
-                            </ButtonsContainer>
+                            <ButtonAddRemove quantity={1}/>
 
                             <IconContainer title='Adicionar ao carrinho'>
                                 <ShoppingCart weight='fill'/>
@@ -80,15 +65,7 @@ export function Home() {
                     <ShoppContainer>
                         <p><span>R$</span>9,90</p>
                         <QuantityContainer>
-                            <ButtonsContainer>
-                                <button>
-                                    <Minus width={14}/>
-                                </button>
-                                <p>1</p>
-                                <button>
-                                    <Plus width={14} />
-                                </button>
-                            </ButtonsContainer>
+                            <ButtonAddRemove quantity={1}/>
 
                             <IconContainer title='Adicionar ao carrinho'>
                                 <ShoppingCart weight='fill'/>
@@ -109,15 +86,7 @@ export function Home() {
                     <ShoppContainer>
                         <p><span>R$</span>9,90</p>
                         <QuantityContainer>
-                            <ButtonsContainer>
-                                <button>
-                                    <Minus width={14}/>
-                                </button>
-                                <p>1</p>
-                                <button>
-                                    <Plus width={14} />
-                                </button>
-                            </ButtonsContainer>
+                            <ButtonAddRemove quantity={1}/>
 
                             <IconContainer title='Adicionar ao carrinho'>
                                 <ShoppingCart weight='fill'/>
@@ -138,15 +107,7 @@ export function Home() {
                     <ShoppContainer>
                         <p><span>R$</span>9,90</p>
                         <QuantityContainer>
-                            <ButtonsContainer>
-                                <button>
-                                    <Minus width={14}/>
-                                </button>
-                                <p>1</p>
-                                <button>
-                                    <Plus width={14} />
-                                </button>
-                            </ButtonsContainer>
+                            <ButtonAddRemove quantity={1}/>
 
                             <IconContainer title='Adicionar ao carrinho'>
                                 <ShoppingCart weight='fill'/>

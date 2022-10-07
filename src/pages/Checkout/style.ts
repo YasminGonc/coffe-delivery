@@ -1,17 +1,14 @@
 import styled from 'styled-components'
+import { Form } from 'react-router-dom'
 
-export const CheckoutContainer = styled.div`
+export const CheckoutContainer = styled.form`
     padding: 0 1rem; //padding lateral para o mobile
 
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 1.5rem;
 
-    h2 {
-        font-size: 1.125rem;
-        font-family: 'Baloo 2', cursive;
-        font-weight: 700;
-        color: var(--baseSubtitle);
-        margin-bottom: -1rem;
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
     }
 `
