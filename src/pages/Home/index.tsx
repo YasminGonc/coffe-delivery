@@ -30,7 +30,7 @@ export function Home() {
                             <ShoppContainer>
                                 <p><span>R$</span>{order.price.toFixed(2).toString().replace('.', ',')}</p>
                                 <QuantityContainer>
-                                    <ButtonAddRemove quantity={order.quantity} />
+                                    <ButtonAddRemove idC={order.id} quantity={order.quantity} />
                                     <IconContainer title='Adicionar ao carrinho'>
                                         <ShoppingCart weight='fill' />
                                     </IconContainer>

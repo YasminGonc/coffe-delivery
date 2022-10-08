@@ -2,26 +2,40 @@ import { CartIcon, CartNav, HeaderContainer, IconsContainer, LocationContainer, 
 
 import Logo from '../../assets/logo.png'
 import { NavLink } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+
+interface Locale {
+    locality: string;
+    region_code: string;
+}
 
 export function Header() {
-    useEffect(() => {
+    // const [latitude, setLatitude] = useState(0);
+    // const [longitude, setLongitude] = useState(0);
+    // const [locale, setLocale] = useState<Locale>();
 
-    }, [])
+    // function getLocation() {
+    //     navigator.geolocation.getCurrentPosition((position) => {
+    //         setLatitude(position.coords.latitude);
+    //         setLongitude(position.coords.longitude);
+    //     });
+    // }
 
-    function getLocation() {
-        navigator.geolocation.getCurrentPosition((position) => {
-            const latitude = position.coords.latitude;
-            const longitude = position.coords.longitude;
-            console.log(latitude, longitude);
-        });
-    }
-
-    getLocation()
-
-    //http://api.positionstack.com/v1/reverse?access_key=6edfa145c67617953e0582f72ca60b40&query=-21.1411746,-47.8155695
+    // useEffect(() => {
+    //     getLocation();
+    // }, [])
     
     
+    // useEffect(() => {
+    //     fetch(`http://api.positionstack.com/v1/reverse?access_key=6edfa145c67617953e0582f72ca60b40&query=${latitude},${longitude}`)
+    //         .then(response => response.json())
+    //         .then(data => console.log(data))
+
+    // }, [latitude, longitude])
+
+    //console.log(latitude)
+
+ 
     return(
         <HeaderContainer>
             <NavLink to='/' title='Home'>
