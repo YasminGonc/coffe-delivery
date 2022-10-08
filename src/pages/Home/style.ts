@@ -22,6 +22,8 @@ export const HomeContainer = styled.div`
             font-size: 2rem;
             padding: 0;
         }
+        
+        margin-bottom: 2rem;
     }
 `
 export const MenuContainer = styled.div`
@@ -33,10 +35,6 @@ export const MenuContainer = styled.div`
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
-
-    @media screen and (min-width: 1024px) {
-        //grid-template-columns: 1fr 1fr 1fr;
-    } 
 
     @media screen and (min-width: 1440px){
         grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -69,6 +67,12 @@ export const CoffeeContainer = styled.div`
         justify-self: center;
         margin: 0;
     }
+`
+export const TagContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 `
 export const Tag = styled.span`
     text-transform: uppercase;

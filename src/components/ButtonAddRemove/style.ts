@@ -5,7 +5,7 @@ export const ButtonsContainer = styled.div`
     align-items: center;
     justify-content: center;
     gap: 0.25rem;
-    padding: 0.5rem;
+    padding: 0.25rem;
     background-color: var(--baseButton);
     border-radius: 6px;
 
