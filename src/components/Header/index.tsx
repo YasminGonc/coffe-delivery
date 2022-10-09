@@ -1,8 +1,9 @@
-import { CartIcon, CartNav, HeaderContainer, IconsContainer, LocationContainer, MapIcon } from './style'
+import { CartIcon, CartNav, HeaderContainer, IconsContainer, LocationContainer, MapIcon, OrderAmountContainer } from './style'
 
 import Logo from '../../assets/logo.png'
 import { NavLink } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { CoffeeOrderContext } from '../../context/CoffeeOrderContext';
 
 interface Locale {
     locality: string;
@@ -10,6 +11,7 @@ interface Locale {
 }
 
 export function Header() {
+    const { orderQuantity, showOrderQuantity } = useContext(CoffeeOrderContext);
     // const [latitude, setLatitude] = useState(0);
     // const [longitude, setLongitude] = useState(0);
     // const [locale, setLocale] = useState<Locale>();
@@ -50,6 +52,9 @@ export function Header() {
 
                 <CartNav to='/checkout' title='Carrinho'>
                     <CartIcon weight='fill' />
+                    <OrderAmountContainer showNumber={showOrderQuantity}>
+                        <span>{orderQuantity}</span>
+                    </OrderAmountContainer>
                 </CartNav>
             </IconsContainer>
             

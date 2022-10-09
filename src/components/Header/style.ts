@@ -48,8 +48,32 @@ export const CartIcon = styled(ShoppingCart)`
 export const CartNav = styled(NavLink)`
     display: flex;
     align-items: center;
+    position: relative;
     
     background: var(--yellowLight);
     padding: 0.5rem;
     border-radius: 6px;
+`
+interface OrderAmountContainerProps {
+    showNumber: boolean;
+}
+
+export const OrderAmountContainer = styled.div<OrderAmountContainerProps>`
+    visibility: ${props => props.showNumber ? 'visible' : 'hidden'};
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+
+    background-color: var(--yellowDark);
+    border-radius: 50%;
+
+    font-size: 0.625rem;
+    color: var(--white);
+
+    width: 1rem;
+    height: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `

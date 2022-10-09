@@ -40,7 +40,7 @@ export const ItemContainer = styled.div`
         } 
     }
 `
-export const Coffee = styled.p`
+export const CoffeeName = styled.p`
     color: var(--baseSubtitle);
     grid-area: coffee;
     font-size: 0.875rem; 
@@ -121,4 +121,7 @@ export const ConfirmOrder = styled.button`
     &:hover {
         background-color: var(--yellowDark);
     }
+`
+export const NoOrder = styled.div`
+    text-align: center;
 `

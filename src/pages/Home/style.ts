@@ -132,4 +132,8 @@ export const IconContainer = styled.button`
     border-radius: 6px;
     padding: 0.5rem 0.6rem;
     cursor: pointer;
+
+    &:hover {
+        background-color: var(--purpleDark);
+    }
 `
