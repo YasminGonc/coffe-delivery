@@ -48,7 +48,11 @@ export const InputsContainer = styled.div`
     gap: 1rem;
     color: var(--baseLabel);   
 `
-const InputContainer = styled.div`
+interface InputContainerProps {
+    hasErrors?: boolean;
+}
+
+const InputContainer = styled.div<InputContainerProps>`
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
@@ -65,7 +69,8 @@ const InputContainer = styled.div`
         font-size: 0.875rem;
         
         border-radius: 6px;
-        border: 1px solid var(--baseButton);
+        border: 1px solid;
+        border-color: ${props => props.hasErrors ? 'var(--warning)' : 'var(--baseButton)'};
         background-color: var(--baseInput);
 
         &:focus {
@@ -98,12 +103,7 @@ export const InputUf = styled(InputContainer)`
 export const InputCity = styled(InputContainer)`
     grid-area: city;
 `
-export const LabelContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-
-    span {
-        font-size: 0.625rem;
-        color: var(--warning);
-    }
+export const Error = styled.span`
+    font-size: 0.625rem;
+    color: var(--warning);
 `

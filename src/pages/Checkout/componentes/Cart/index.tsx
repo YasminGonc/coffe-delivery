@@ -15,35 +15,16 @@ export function Cart() {
                 {hasOrders &&
                     coffeeOrder.map(order => {
                         return (
-                            <>
-                                <ItemContainer key={order.id}>
-                                    <img src={order.img} />
-                                    <CoffeeName>{order.name}</CoffeeName>
-                                    <Price>R$ {order.price.toFixed(2).toString().replace('.', ',')}</Price>
-                                    <AddRemove quantity={order.quantity} idC={order.id} />
-                                    <ButtonRemove>
-                                        <Trash />
-                                        Remover
-                                    </ButtonRemove>
-                                </ItemContainer>
-
-                                <TotalContainer>
-                                    <TotalItem>
-                                        <p>Total de itens</p>
-                                        <p>R$ {coffeeBill.toFixed(2).toString().replace('.', ',')}</p>
-                                    </TotalItem>
-                                    <TotalItem>
-                                        <p>Entrega</p>
-                                        <p>R$ 3,50</p>
-                                    </TotalItem>
-                                    <TotalItem>
-                                        <Total>Total</Total>
-                                        <Total>R$ {(coffeeBill + 3.5).toFixed(2).toString().replace('.', ',')}</Total>
-                                    </TotalItem>
-                                </TotalContainer>
-
-                                <ConfirmOrder type='submit'>confirmar pedido</ConfirmOrder>
-                            </>
+                            <ItemContainer key={order.id}>
+                                <img src={order.img} />
+                                <CoffeeName>{order.name}</CoffeeName>
+                                <Price>R$ {order.price.toFixed(2).toString().replace('.', ',')}</Price>
+                                <AddRemove quantity={order.quantity} idC={order.id} />
+                                <ButtonRemove>
+                                    <Trash />
+                                    Remover
+                                </ButtonRemove>
+                            </ItemContainer>
                         )
                     })
                 }
@@ -54,6 +35,27 @@ export function Cart() {
                         <p>Nenhum item selecionado.</p>
                         <p>Volte para página principal para escolher seu café.</p>
                     </NoOrder>
+                }
+
+                {hasOrders &&
+                    <>
+                        <TotalContainer>
+                            <TotalItem>
+                                <p>Total de itens</p>
+                                <p>R$ {coffeeBill.toFixed(2).toString().replace('.', ',')}</p>
+                            </TotalItem>
+                            <TotalItem>
+                                <p>Entrega</p>
+                                <p>R$ 3,50</p>
+                            </TotalItem>
+                            <TotalItem>
+                                <Total>Total</Total>
+                                <Total>R$ {(coffeeBill + 3.5).toFixed(2).toString().replace('.', ',')}</Total>
+                            </TotalItem>
+                        </TotalContainer>
+
+                        <ConfirmOrder type='submit'>confirmar pedido</ConfirmOrder>
+                    </>
                 }
             </ItensContainer>
         </CartContainer>

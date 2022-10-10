@@ -1,10 +1,23 @@
 import { HeaderContainer, InputContainer, PaymentContainer, TextContainer } from './style'
 
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
+import { useFormContext } from 'react-hook-form'
+
+interface ErrorsType {
+    errors: {
+        [key: string]: {
+            message: string;
+        }
+    }
+}
 
 export function PaymentMethod() {
+    const { register, formState } = useFormContext();
+
+    const { errors } = formState as unknown as ErrorsType;
+
     return(
-        <PaymentContainer>
+        <PaymentContainer hasError={!!errors.pagamento?.message}>
             <HeaderContainer>
                 <CurrencyDollar size={20} />
                 <TextContainer>
@@ -14,24 +27,26 @@ export function PaymentMethod() {
             </HeaderContainer>
 
             <InputContainer>
-                <input type="radio" name="payment" id="credit" />
+                <input type="radio" id="credit" {...register('pagamento')} value='Cartão de crédito'/>
                 <label htmlFor="credit">
                     <CreditCard />
                     Cartão de crédito
                 </label>
 
-                <input type="radio" name="payment" id="debit" />
+                <input type="radio" id="debit" {...register('pagamento')} value='Cartão de débito'/>
                 <label htmlFor="debit">
                     <Bank />
                     Cartão de débito
                 </label>
 
-                <input type="radio" name="payment" id="cash" />
+                <input type="radio" id="cash" {...register('pagamento')} value='Dinheiro'/>
                 <label htmlFor="cash">
                     <Money />
                     Dinheiro
                 </label>
             </InputContainer>
+
+            {/* <span>{errors.pagamento?.message}</span> */}
         </PaymentContainer>
     )
 }

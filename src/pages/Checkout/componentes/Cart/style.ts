@@ -3,6 +3,7 @@ import { ButtonAddRemove } from '../../../../components/ButtonAddRemove'
 
 export const CartContainer = styled.div`
     margin-bottom: 2rem;
+    
     h2 {
         margin-bottom: 1rem;
     }

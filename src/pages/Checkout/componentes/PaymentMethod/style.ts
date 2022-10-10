@@ -1,10 +1,16 @@
 import styled from 'styled-components'
 
-export const PaymentContainer = styled.div`
+interface PaymentContainerProps {
+    hasError: boolean;
+}
+
+export const PaymentContainer = styled.div<PaymentContainerProps>`
     background-color: var(--baseCard);
     border-radius: 6px;
+    border: 1px solid;
     font-size: 0.875rem;
     color: var(--baseText);
+    border-color: ${props => props.hasError ? 'var(--warning)' : 'transparent'};
 
     padding: 1.5rem; //padding desktop 2.5rem
 `
