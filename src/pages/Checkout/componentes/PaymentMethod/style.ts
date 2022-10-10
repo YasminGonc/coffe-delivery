@@ -13,6 +13,7 @@ export const PaymentContainer = styled.div<PaymentContainerProps>`
     border-color: ${props => props.hasError ? 'var(--warning)' : 'transparent'};
 
     padding: 1.5rem; //padding desktop 2.5rem
+    margin-bottom: 2rem;
 `
 export const HeaderContainer = styled.div`
     display: flex;

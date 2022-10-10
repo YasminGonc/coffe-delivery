@@ -45,6 +45,13 @@ export const CartIcon = styled(ShoppingCart)`
     width: 1rem;
     height: 1rem;
 `
+interface CartNavContainerProps {
+    showCart?: boolean;
+}
+
+export const CartNavContainer = styled.div<CartNavContainerProps>`
+    visibility: ${props => props.showCart ? 'hidden' : 'visible'};
+`
 export const CartNav = styled(NavLink)`
     display: flex;
     align-items: center;

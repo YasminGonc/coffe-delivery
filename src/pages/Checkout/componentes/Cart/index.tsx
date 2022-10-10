@@ -5,8 +5,12 @@ import { useContext } from 'react'
 import { CoffeeOrderContext } from '../../../../context/CoffeeOrderContext'
 
 export function Cart() {
-    const { coffeeOrder, coffeeBill } = useContext(CoffeeOrderContext);
+    const { coffeeOrder, coffeeBill, removeCoffeeFromOrder } = useContext(CoffeeOrderContext);
     const hasOrders = coffeeOrder.length > 0 ? true : false;
+
+    function handleRemoveCoffeeFromOrder(id: string) {
+        removeCoffeeFromOrder(id);
+    }
 
     return (
         <CartContainer>
@@ -20,7 +24,7 @@ export function Cart() {
                                 <CoffeeName>{order.name}</CoffeeName>
                                 <Price>R$ {order.price.toFixed(2).toString().replace('.', ',')}</Price>
                                 <AddRemove quantity={order.quantity} idC={order.id} />
-                                <ButtonRemove>
+                                <ButtonRemove onClick={() => handleRemoveCoffeeFromOrder(order.id)}>
                                     <Trash />
                                     Remover
                                 </ButtonRemove>

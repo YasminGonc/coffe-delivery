@@ -1,4 +1,4 @@
-import { CartIcon, CartNav, HeaderContainer, IconsContainer, LocationContainer, MapIcon, OrderAmountContainer } from './style'
+import { CartIcon, CartNav, CartNavContainer, HeaderContainer, IconsContainer, LocationContainer, MapIcon, OrderAmountContainer } from './style'
 
 import Logo from '../../assets/logo.png'
 import { NavLink } from 'react-router-dom'
@@ -10,7 +10,11 @@ interface Locale {
     region_code: string;
 }
 
-export function Header() {
+interface HeaderProps {
+    hiddenCart?: boolean;
+}
+
+export function Header({ hiddenCart }: HeaderProps) {
     const { orderQuantity, showOrderQuantity } = useContext(CoffeeOrderContext);
     // const [latitude, setLatitude] = useState(0);
     // const [longitude, setLongitude] = useState(0);
@@ -50,12 +54,14 @@ export function Header() {
                     <span>Goiânia, GO</span>
                 </LocationContainer>
 
-                <CartNav to='/checkout' title='Carrinho'>
-                    <CartIcon weight='fill' />
-                    <OrderAmountContainer showNumber={showOrderQuantity}>
-                        <span>{orderQuantity}</span>
-                    </OrderAmountContainer>
-                </CartNav>
+                <CartNavContainer showCart={hiddenCart}>
+                    <CartNav to='/checkout' title='Carrinho'>
+                        <CartIcon weight='fill' />
+                        <OrderAmountContainer showNumber={showOrderQuantity}>
+                            <span>{orderQuantity}</span>
+                        </OrderAmountContainer>
+                    </CartNav>
+                </CartNavContainer>
             </IconsContainer>
             
         </HeaderContainer>

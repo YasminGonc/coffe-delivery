@@ -20,6 +20,7 @@ interface CoffeeOrderContext {
     addCoffee: (id: string) => void;
     removeCoffee: (id: string) => void;
     showComponentWithOrderQuantity: () => void;
+    removeCoffeeFromOrder: (id: string) => void;
 }
 
 export const CoffeeOrderContext = createContext({} as CoffeeOrderContext);
@@ -38,15 +39,29 @@ export function CoffeeOrderProvider({ children }: CoffeeOrderProviderProps) {
     function addCoffee(id: string) {
        const sumCoffeQuantity = coffeeOrderMenu.map(coffee => {return coffee.id == id ? {...coffee, quantity: coffee.quantity + 1} : {...coffee}});
        setCoffeeOrderMenu(sumCoffeQuantity);
+
+       const sumCoffeeQuantityOrder = coffeeOrder.map(coffee => {return coffee.id == id ? {...coffee, quantity: coffee.quantity + 1} : {...coffee}});
+       setCoffeeOrder(sumCoffeeQuantityOrder);
     }
 
     function removeCoffee(id: string) {
         const subtractCoffeQuantity = coffeeOrderMenu.map(coffee => {return (coffee.id == id && coffee.quantity > 0) ? {...coffee, quantity: coffee.quantity - 1} : {...coffee}});
         setCoffeeOrderMenu(subtractCoffeQuantity);
+
+        const subtractCoffeQuantityOrder = coffeeOrder.map(coffee => {return (coffee.id == id && coffee.quantity > 0) ? {...coffee, quantity: coffee.quantity - 1} : {...coffee}});
+        setCoffeeOrder(subtractCoffeQuantityOrder);
     }
 
     function showComponentWithOrderQuantity() {
         setShowOrderQuantity(true); 
+    }
+
+    function removeCoffeeFromOrder(id: string) {
+        const coffeeOrderWithoutDeletedOne = coffeeOrder.filter(order => order.id != id);
+        setCoffeeOrder(coffeeOrderWithoutDeletedOne);
+
+        const changeCoffeeQuantity = coffeeOrderMenu.map(coffee => {return (coffee.id == id) ? {...coffee, quantity: 0} : {...coffee}});
+        setCoffeeOrderMenu(changeCoffeeQuantity);
     }
 
     function checkQuantity(orderMenu: CoffeeOrder) {
@@ -63,10 +78,10 @@ export function CoffeeOrderProvider({ children }: CoffeeOrderProviderProps) {
         const billAmount = coffeeOrderMenu.reduce((acumulador, currentValue) => {return acumulador + (currentValue.quantity * currentValue.price)}, 0);
         setCoffeeBill(billAmount);
     
-    }, [coffeeOrderMenu])
+    }, [coffeeOrderMenu]);
     
     return(
-        <CoffeeOrderContext.Provider value={{coffeeOrderMenu, coffeeOrder, showOrderQuantity, orderQuantity, coffeeBill, addCoffee, removeCoffee, showComponentWithOrderQuantity}}>
+        <CoffeeOrderContext.Provider value={{coffeeOrderMenu, coffeeOrder, showOrderQuantity, orderQuantity, coffeeBill, addCoffee, removeCoffee, showComponentWithOrderQuantity, removeCoffeeFromOrder }}>
             {children}
         </CoffeeOrderContext.Provider>
     )
