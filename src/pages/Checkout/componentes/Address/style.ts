@@ -81,6 +81,11 @@ const InputContainer = styled.div<InputContainerProps>`
         &::placeholder {
             color: var(--baseLabel);
         }
+
+        &:disabled {
+            opacity: 0.8;
+            background-color: var(--baseButton);
+        }
     }
 `
 export const InputCep = styled(InputContainer)`

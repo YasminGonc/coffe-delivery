@@ -3,6 +3,8 @@ import { AddressContainer, HeaderContainer, InputCep, InputCity, InputComplement
 import { MapPinLine } from 'phosphor-react'
 import { PaymentMethod } from '../PaymentMethod'
 import { useFormContext } from 'react-hook-form'
+import { useContext } from 'react'
+import { DeliveryContext } from '../../../../context/DeliveryContext'
 
 interface ErrorsType {
     errors: {
@@ -13,9 +15,18 @@ interface ErrorsType {
 }
 
 export function Address() {
-    const { register, getValues, formState } = useFormContext()
+    const { takeCepFromInput, dataFromAPIFailed, dataFromAPI } = useContext(DeliveryContext);
+
+    const { register, getValues, formState } = useFormContext();
 
     const { errors } = formState as unknown as ErrorsType;
+
+    function handleOnBlurCep(cep: string) {
+        const cepConverted = cep.replace(/-/, '');
+        if (cepConverted.length > 7) {
+            takeCepFromInput(cepConverted);
+        }
+    }
 
     return (
         <OrderContainer>
@@ -36,11 +47,12 @@ export function Address() {
                             type="text"
                             id='cep'
                             placeholder='CEP'
-                            {...register('cep', { valueAsNumber: false }/*, {
-                                onChange: () => console.log(getValues('cep'))
-                            }*/)}
+                            {...register('cep', {
+                                onBlur: () => handleOnBlurCep(getValues('cep'))
+                            })}
                         />
                         <Error>{errors.cep?.message}</Error>
+                        <Error>{dataFromAPIFailed}</Error>
                     </InputCep>
 
                     <InputStreet hasErrors={!!errors.rua?.message}>
@@ -50,6 +62,8 @@ export function Address() {
                             id='rua'
                             placeholder='Rua'
                             {...register('rua')}
+                            defaultValue={dataFromAPI?.logradouro}
+                            disabled={!!dataFromAPI?.logradouro}
                         />
                         <Error>{errors.rua?.message}</Error>
                     </InputStreet>
@@ -60,7 +74,7 @@ export function Address() {
                             type="text"
                             id='numero'
                             placeholder='N°'
-                            {...register('numero', { valueAsNumber: false })}
+                            {...register('numero')}
                         />
                         <Error>{errors.numero?.message}</Error>
                     </InputNumber>
@@ -82,6 +96,8 @@ export function Address() {
                             id='uf'
                             placeholder='UF'
                             {...register('uf')}
+                            defaultValue={dataFromAPI?.uf}
+                            disabled={!!dataFromAPI?.uf}
                         />
                         <Error>{errors.uf?.message}</Error>
                     </InputUf>
@@ -93,6 +109,8 @@ export function Address() {
                             id='cidade'
                             placeholder='Cidade'
                             {...register('cidade')}
+                            defaultValue={dataFromAPI?.localidade}
+                            disabled={!!dataFromAPI?.localidade}
                         />
                         <Error>{errors.cidade?.message}</Error>
                     </InputCity>

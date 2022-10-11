@@ -20,9 +20,9 @@ export interface DeliveryDataForm {
 }
 
 const deliveryFormValidationSchema = zod.object({
-    cep: zod.string().min(8, 'Informe um CEP com 8 dígitos').max(8, 'Informe um CEP com 8 dígitos'),
+    cep: zod.string().regex(/^[0-9]{5}-[0-9]{3}$/, 'Preencha um CEP válido Ex.: 03064-000'),
     rua: zod.string().min(1, 'Informe o nome da rua'),
-    numero: zod.string().min(1, 'Informe o número'),
+    numero: zod.string().regex(/^[0-9]/, 'Informe um número válido').min(1, 'Informe o número'),
     complemento: zod.string().optional(),
     uf: zod.string().min(2, 'Informe o estado').max(2, 'Informe o estado'),
     cidade: zod.string().min(3, 'Informe a cidade'),
@@ -41,8 +41,9 @@ export function Checkout() {
     const navigate = useNavigate();
 
     function handleCreateDelivery(data: DeliveryDataForm) {
-        createNewDelivery(data);
-        navigate('/success');
+        //createNewDelivery(data);
+        //navigate('/success');
+        console.log(data);
     }
 
     return (
