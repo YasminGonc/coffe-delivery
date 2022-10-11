@@ -63,6 +63,7 @@ export const CartNav = styled(NavLink)`
 `
 interface OrderAmountContainerProps {
     showNumber: boolean;
+    showCart?: boolean;
 }
 
 export const OrderAmountContainer = styled.div<OrderAmountContainerProps>`
@@ -80,7 +81,7 @@ export const OrderAmountContainer = styled.div<OrderAmountContainerProps>`
     width: 1rem;
     height: 1rem;
 
-    display: flex;
+    display: ${props => props.showCart ? 'none' : 'flex'};
     align-items: center;
     justify-content: center;
 `

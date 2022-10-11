@@ -11,21 +11,15 @@ import { useContext } from 'react'
 
 export interface DeliveryDataForm {
     cep: string;
-    rua: string;
     numero: number;
     complemento: string | null;
-    uf: string;
-    cidade: string;
     pagamento: string;
 }
 
 const deliveryFormValidationSchema = zod.object({
-    cep: zod.string().regex(/^[0-9]{5}-[0-9]{3}$/, 'Preencha um CEP válido Ex.: 03064-000'),
-    rua: zod.string().min(1, 'Informe o nome da rua'),
+    cep: zod.string().regex(/^[0-9]{5}\-?[0-9]{3}$/, 'Preencha um CEP válido Ex.: 03064-000'),
     numero: zod.string().regex(/^[0-9]/, 'Informe um número válido').min(1, 'Informe o número'),
     complemento: zod.string().optional(),
-    uf: zod.string().min(2, 'Informe o estado').max(2, 'Informe o estado'),
-    cidade: zod.string().min(3, 'Informe a cidade'),
     pagamento: zod.string(),
 });
 
@@ -41,9 +35,8 @@ export function Checkout() {
     const navigate = useNavigate();
 
     function handleCreateDelivery(data: DeliveryDataForm) {
-        //createNewDelivery(data);
-        //navigate('/success');
-        console.log(data);
+        createNewDelivery(data);
+        navigate('/success');
     }
 
     return (

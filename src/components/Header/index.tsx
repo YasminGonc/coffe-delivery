@@ -2,7 +2,7 @@ import { CartIcon, CartNav, CartNavContainer, HeaderContainer, IconsContainer, L
 
 import Logo from '../../assets/logo.png'
 import { NavLink } from 'react-router-dom'
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { CoffeeOrderContext } from '../../context/CoffeeOrderContext';
 import { DeliveryContext } from '../../context/DeliveryContext';
 
@@ -32,7 +32,7 @@ export function Header({ hiddenCart }: HeaderProps) {
                 <CartNavContainer showCart={hiddenCart}>
                     <CartNav to='/checkout' title='Carrinho'>
                         <CartIcon weight='fill' />
-                        <OrderAmountContainer showNumber={showOrderQuantity}>
+                        <OrderAmountContainer showNumber={showOrderQuantity} showCart={hiddenCart}>
                             <span>{orderQuantity}</span>
                         </OrderAmountContainer>
                     </CartNav>

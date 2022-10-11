@@ -3,10 +3,7 @@ import { DeliveryDataForm } from '../pages/Checkout';
 
 interface DeliveryData {
     id: string;
-    rua: string;
     numero: number;
-    uf: string;
-    cidade: string;
     pagamento: string;
 }
 
@@ -14,6 +11,7 @@ interface APIData {
     localidade: string;
     logradouro: string;
     uf: string;
+    bairro: string;
 }
 
 interface DeliveryContext {
@@ -39,10 +37,7 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
     function createNewDelivery(data: DeliveryDataForm) {
         const newDelivery: DeliveryData = {
             id: String(new Date().getTime()),
-            rua: data.rua,
             numero: data.numero,
-            uf: data.uf,
-            cidade: data.cidade,
             pagamento: data.pagamento,
         }
         setDeliveryInfos(newDelivery);
@@ -64,7 +59,8 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
                         const APIData: APIData = {
                             localidade: data.localidade,
                             logradouro: data.logradouro,
-                            uf: data.uf
+                            uf: data.uf,
+                            bairro: data.bairro,
                         }
                         setDataFromAPI(APIData);
                         setDataFromAPIFailed('');
