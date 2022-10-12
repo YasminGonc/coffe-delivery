@@ -5,6 +5,7 @@ interface DeliveryData {
     id: string;
     numero: number;
     pagamento: string;
+    localidade?: string;
 }
 
 interface APIData {
@@ -63,14 +64,15 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
                             bairro: data.bairro,
                         }
                         setDataFromAPI(APIData);
+                        //  setDeliveryInfos((state) => {
+                        //      return {...state, localidade: data.localidade}
+                        //  })
                         setDataFromAPIFailed('');
                     }
                 })
         }
         
     }, [cep]);
-
-    //console.log(dataFromAPI)
 
     return(
         <DeliveryContext.Provider value={{ deliveryInfos, dataFromAPI, dataFromAPIFailed, createNewDelivery, takeCepFromInput}}>
