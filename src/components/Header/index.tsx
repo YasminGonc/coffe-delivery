@@ -13,7 +13,7 @@ interface HeaderProps {
 export function Header({ hiddenCart }: HeaderProps) {
     const { orderQuantity, showOrderQuantity } = useContext(CoffeeOrderContext);
     
-    const { dataFromAPI } = useContext(DeliveryContext);
+    const { dataFromAPIForm } = useContext(DeliveryContext);
  
     return(
         <HeaderContainer>
@@ -22,10 +22,10 @@ export function Header({ hiddenCart }: HeaderProps) {
             </NavLink>
 
             <IconsContainer>
-                {dataFromAPI?.localidade && 
+                {dataFromAPIForm?.localidade && 
                     <LocationContainer>
                         <MapIcon weight='fill' />
-                        <span>{dataFromAPI.localidade}, {dataFromAPI.uf}</span>
+                        <span>{dataFromAPIForm.localidade}, {dataFromAPIForm.uf}</span>
                     </LocationContainer>
                 }
 

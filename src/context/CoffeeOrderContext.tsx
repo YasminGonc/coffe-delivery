@@ -21,6 +21,7 @@ interface CoffeeOrderContext {
     removeCoffee: (id: string) => void;
     showComponentWithOrderQuantity: () => void;
     removeCoffeeFromOrder: (id: string) => void;
+    clearCoffeeOrder: () => void;
 }
 
 export const CoffeeOrderContext = createContext({} as CoffeeOrderContext);
@@ -68,6 +69,15 @@ export function CoffeeOrderProvider({ children }: CoffeeOrderProviderProps) {
         return orderMenu.quantity > 0
     }
 
+    function clearCoffeeOrder() {
+        setCoffeeOrder([]);
+
+        const clearCoffeeQuantity = coffeeOrderMenu.map(coffee => {return (coffee.quantity > 0) ? {...coffee, quantity: 0} : {...coffee}});
+        setCoffeeOrderMenu(clearCoffeeQuantity);
+
+        setShowOrderQuantity(false); 
+    }
+
     useEffect(() => {
         const orderSum = coffeeOrderMenu.reduce((acumulador, currentValue) => {return acumulador + currentValue.quantity}, 0);
         setOrderQuantity(orderSum);
@@ -81,7 +91,7 @@ export function CoffeeOrderProvider({ children }: CoffeeOrderProviderProps) {
     }, [coffeeOrderMenu]);
     
     return(
-        <CoffeeOrderContext.Provider value={{coffeeOrderMenu, coffeeOrder, showOrderQuantity, orderQuantity, coffeeBill, addCoffee, removeCoffee, showComponentWithOrderQuantity, removeCoffeeFromOrder }}>
+        <CoffeeOrderContext.Provider value={{coffeeOrderMenu, coffeeOrder, showOrderQuantity, orderQuantity, coffeeBill, addCoffee, removeCoffee, showComponentWithOrderQuantity, removeCoffeeFromOrder, clearCoffeeOrder }}>
             {children}
         </CoffeeOrderContext.Provider>
     )

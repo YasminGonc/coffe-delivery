@@ -15,7 +15,7 @@ interface ErrorsType {
 }
 
 export function Address() {
-    const { takeCepFromInput, dataFromAPIFailed, dataFromAPI } = useContext(DeliveryContext);
+    const { takeCepFromInput, dataFromAPIFailed, dataFromAPIForm } = useContext(DeliveryContext);
 
     const { register, getValues, formState } = useFormContext();
 
@@ -62,8 +62,8 @@ export function Address() {
                             id='rua'
                             placeholder='Rua'
                             {...register('rua')}
-                            defaultValue={dataFromAPI?.logradouro}
-                            disabled={!!dataFromAPI?.logradouro}
+                            defaultValue={dataFromAPIForm?.logradouro}
+                            disabled={!!dataFromAPIForm?.logradouro}
                         />
                         <Error>{errors.rua?.message}</Error>
                     </InputStreet>
@@ -96,8 +96,8 @@ export function Address() {
                             id='uf'
                             placeholder='UF'
                             {...register('uf')}
-                            defaultValue={dataFromAPI?.uf}
-                            disabled={!!dataFromAPI?.uf}
+                            defaultValue={dataFromAPIForm?.uf}
+                            disabled={!!dataFromAPIForm?.uf}
                         />
                         <Error>{errors.uf?.message}</Error>
                     </InputUf>
@@ -109,8 +109,8 @@ export function Address() {
                             id='cidade'
                             placeholder='Cidade'
                             {...register('cidade')}
-                            defaultValue={dataFromAPI?.localidade}
-                            disabled={!!dataFromAPI?.localidade}
+                            defaultValue={dataFromAPIForm?.localidade}
+                            disabled={!!dataFromAPIForm?.localidade}
                         />
                         <Error>{errors.cidade?.message}</Error>
                     </InputCity>

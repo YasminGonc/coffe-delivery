@@ -5,7 +5,6 @@ interface DeliveryData {
     id: string;
     numero: number;
     pagamento: string;
-    localidade?: string;
 }
 
 interface APIData {
@@ -13,14 +12,17 @@ interface APIData {
     logradouro: string;
     uf: string;
     bairro: string;
+    erro?: string;
 }
 
 interface DeliveryContext {
     deliveryInfos: DeliveryData | null | undefined;
     dataFromAPI: APIData | null | undefined;
+    dataFromAPIForm: APIData | null | undefined;
     dataFromAPIFailed: string;
     createNewDelivery: (data: DeliveryDataForm) => void;
     takeCepFromInput: (cep: string) => void;
+    clearForm: () => void;
 }
 
 export const DeliveryContext = createContext({} as DeliveryContext);
@@ -33,6 +35,7 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
     const [deliveryInfos, setDeliveryInfos] = useState<DeliveryData | null>();
     const [cep, setCep] = useState('');
     const [dataFromAPI, setDataFromAPI] = useState<APIData | null>();
+    const [dataFromAPIForm, setDataFromAPIForm] = useState<APIData | null>();
     const [dataFromAPIFailed, setDataFromAPIFailed] = useState('');
 
     function createNewDelivery(data: DeliveryDataForm) {
@@ -48,9 +51,14 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
         setCep(cep);
     }
 
+    function clearForm() {
+        setDataFromAPIForm(null);
+        setCep('');
+    }
+
     useEffect(() => {
-        if(cep.length > 7) {
-            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        if (cep.length > 7) {
+            fetch(`https:viacep.com.br/ws/${cep}/json/`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.erro) {
@@ -64,18 +72,16 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
                             bairro: data.bairro,
                         }
                         setDataFromAPI(APIData);
-                        //  setDeliveryInfos((state) => {
-                        //      return {...state, localidade: data.localidade}
-                        //  })
+                        setDataFromAPIForm(APIData);
                         setDataFromAPIFailed('');
                     }
                 })
         }
-        
+
     }, [cep]);
 
-    return(
-        <DeliveryContext.Provider value={{ deliveryInfos, dataFromAPI, dataFromAPIFailed, createNewDelivery, takeCepFromInput}}>
+    return (
+        <DeliveryContext.Provider value={{ deliveryInfos, dataFromAPI, dataFromAPIFailed, dataFromAPIForm, createNewDelivery, takeCepFromInput, clearForm }}>
             {children}
         </DeliveryContext.Provider>
     )

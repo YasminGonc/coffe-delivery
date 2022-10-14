@@ -8,6 +8,7 @@ import { Cart } from './componentes/Cart'
 import { useNavigate } from 'react-router-dom'
 import { DeliveryContext } from '../../context/DeliveryContext'
 import { useContext } from 'react'
+import { CoffeeOrderContext } from '../../context/CoffeeOrderContext'
 
 export interface DeliveryDataForm {
     cep: string;
@@ -24,7 +25,8 @@ const deliveryFormValidationSchema = zod.object({
 });
 
 export function Checkout() {
-    const { createNewDelivery } = useContext(DeliveryContext);
+    const { createNewDelivery, clearForm } = useContext(DeliveryContext);
+    const { clearCoffeeOrder } = useContext(CoffeeOrderContext);
 
     const deliveryForm = useForm<DeliveryDataForm>({
         resolver: zodResolver(deliveryFormValidationSchema),
@@ -36,6 +38,8 @@ export function Checkout() {
 
     function handleCreateDelivery(data: DeliveryDataForm) {
         createNewDelivery(data);
+        clearForm();
+        clearCoffeeOrder();
         navigate('/success');
     }
 
