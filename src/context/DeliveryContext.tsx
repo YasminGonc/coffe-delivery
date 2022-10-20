@@ -1,10 +1,12 @@
 import { createContext, ReactNode, useEffect, useState } from 'react'
-import { DeliveryDataForm } from '../pages/Checkout';
 
 interface DeliveryData {
-    id: string;
-    numero: number;
+    cidade: string;
+    complemento?: string;
+    numero: string;
     pagamento: string;
+    rua: string;
+    uf: string;
 }
 
 interface APIData {
@@ -18,9 +20,8 @@ interface APIData {
 interface DeliveryContext {
     deliveryInfos: DeliveryData | null | undefined;
     dataFromAPI: APIData | null | undefined;
-    dataFromAPIForm: APIData | null | undefined;
     dataFromAPIFailed: string;
-    createNewDelivery: (data: DeliveryDataForm) => void;
+    createNewDelivery: (data: DeliveryData) => void;
     takeCepFromInput: (cep: string) => void;
     clearForm: () => void;
 }
@@ -32,28 +33,30 @@ interface DeliveryProviderProps {
 }
 
 export function DeliveryProvider({ children }: DeliveryProviderProps) {
-    const [deliveryInfos, setDeliveryInfos] = useState<DeliveryData | null>();
+    const [deliveryInfos, setDeliveryInfos] = useState<DeliveryData | null>(null);
     const [cep, setCep] = useState('');
-    const [dataFromAPI, setDataFromAPI] = useState<APIData | null>();
-    const [dataFromAPIForm, setDataFromAPIForm] = useState<APIData | null>();
+    const [dataFromAPI, setDataFromAPI] = useState<APIData | null>(null);
     const [dataFromAPIFailed, setDataFromAPIFailed] = useState('');
 
-    function createNewDelivery(data: DeliveryDataForm) {
+    function createNewDelivery(data: DeliveryData) {
         const newDelivery: DeliveryData = {
-            id: String(new Date().getTime()),
+            cidade: data.cidade,
+            complemento: data?.complemento,
             numero: data.numero,
             pagamento: data.pagamento,
+            rua: data.rua,
+            uf: data.uf
         }
         setDeliveryInfos(newDelivery);
     }
 
-    function takeCepFromInput(cep: string) {
+    function takeCepFromInput(cep: string) { 
         setCep(cep);
     }
 
     function clearForm() {
-        setDataFromAPIForm(null);
         setCep('');
+        setDataFromAPI(null);
     }
 
     useEffect(() => {
@@ -72,7 +75,6 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
                             bairro: data.bairro,
                         }
                         setDataFromAPI(APIData);
-                        setDataFromAPIForm(APIData);
                         setDataFromAPIFailed('');
                     }
                 })
@@ -81,7 +83,7 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
     }, [cep]);
 
     return (
-        <DeliveryContext.Provider value={{ deliveryInfos, dataFromAPI, dataFromAPIFailed, dataFromAPIForm, createNewDelivery, takeCepFromInput, clearForm }}>
+        <DeliveryContext.Provider value={{ deliveryInfos, dataFromAPI, dataFromAPIFailed, createNewDelivery, takeCepFromInput, clearForm }}>
             {children}
         </DeliveryContext.Provider>
     )

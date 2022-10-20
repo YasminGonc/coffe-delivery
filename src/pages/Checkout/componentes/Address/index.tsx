@@ -15,17 +15,25 @@ interface ErrorsType {
 }
 
 export function Address() {
-    const { takeCepFromInput, dataFromAPIFailed, dataFromAPIForm } = useContext(DeliveryContext);
+    const { takeCepFromInput, dataFromAPIFailed, dataFromAPI } = useContext(DeliveryContext);
 
-    const { register, getValues, formState } = useFormContext();
+    const { register, getValues, formState, setValue } = useFormContext();
 
     const { errors } = formState as unknown as ErrorsType;
 
-    function handleOnBlurCep(cep: string) {
-        const cepConverted = cep.replace(/-/, '');
-        if (cepConverted.length > 7) {
-            takeCepFromInput(cepConverted);
+    function handleCepInput() {
+        const cepInputValue = getValues('cep');
+        const cepInputValueConverted = cepInputValue.replace(/-/, '');
+
+        if (cepInputValueConverted.length == 8) {
+            takeCepFromInput(cepInputValueConverted);
         }
+    }
+
+    if (dataFromAPI) {
+        setValue('rua', dataFromAPI.logradouro);
+        setValue('uf', dataFromAPI.uf)
+        setValue('cidade', dataFromAPI.localidade);
     }
 
     return (
@@ -48,7 +56,7 @@ export function Address() {
                             id='cep'
                             placeholder='CEP'
                             {...register('cep', {
-                                onBlur: () => handleOnBlurCep(getValues('cep'))
+                                onBlur: () => handleCepInput()
                             })}
                         />
                         <Error>{errors.cep?.message}</Error>
@@ -62,8 +70,7 @@ export function Address() {
                             id='rua'
                             placeholder='Rua'
                             {...register('rua')}
-                            defaultValue={dataFromAPIForm?.logradouro}
-                            disabled={!!dataFromAPIForm?.logradouro}
+                            disabled={!!dataFromAPI?.logradouro}
                         />
                         <Error>{errors.rua?.message}</Error>
                     </InputStreet>
@@ -96,8 +103,7 @@ export function Address() {
                             id='uf'
                             placeholder='UF'
                             {...register('uf')}
-                            defaultValue={dataFromAPIForm?.uf}
-                            disabled={!!dataFromAPIForm?.uf}
+                            disabled={!!dataFromAPI?.uf}
                         />
                         <Error>{errors.uf?.message}</Error>
                     </InputUf>
@@ -109,8 +115,7 @@ export function Address() {
                             id='cidade'
                             placeholder='Cidade'
                             {...register('cidade')}
-                            defaultValue={dataFromAPIForm?.localidade}
-                            disabled={!!dataFromAPIForm?.localidade}
+                            disabled={!!dataFromAPI?.localidade}
                         />
                         <Error>{errors.cidade?.message}</Error>
                     </InputCity>

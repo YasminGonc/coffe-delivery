@@ -8,7 +8,7 @@ import { Header } from '../../components/Header'
 import { LayoutContainer } from '../../layout/DefaultLayout/style'
 
 export function Success() {
-    const { deliveryInfos, dataFromAPI } = useContext(DeliveryContext);
+    const { deliveryInfos } = useContext(DeliveryContext);
 
     return (
         <LayoutContainer>
@@ -25,8 +25,8 @@ export function Success() {
                             <MapPin weight='fill' />
                         </MapIcon>
                         <div>
-                            <p>Entrega em <strong>{dataFromAPI?.logradouro}, {deliveryInfos?.numero}</strong></p>
-                            <p>{dataFromAPI?.bairro} - {dataFromAPI?.localidade}, {dataFromAPI?.uf}</p>
+                            <p>Entrega em <strong>{deliveryInfos?.rua}, {deliveryInfos?.numero}</strong></p>
+                            <p>{deliveryInfos?.cidade}, {deliveryInfos?.uf}</p>
                         </div>
                     </Info>
 

@@ -10,19 +10,17 @@ import { DeliveryContext } from '../../context/DeliveryContext'
 import { useContext } from 'react'
 import { CoffeeOrderContext } from '../../context/CoffeeOrderContext'
 
-export interface DeliveryDataForm {
-    cep: string;
-    numero: number;
-    complemento: string | null;
-    pagamento: string;
-}
-
 const deliveryFormValidationSchema = zod.object({
     cep: zod.string().regex(/^[0-9]{5}\-?[0-9]{3}$/, 'Preencha um CEP válido Ex.: 03064-000'),
     numero: zod.string().regex(/^[0-9]/, 'Informe um número válido').min(1, 'Informe o número'),
     complemento: zod.string().optional(),
+    rua: zod.string(),
+    cidade: zod.string(),
+    uf: zod.string(),
     pagamento: zod.string(),
 });
+
+type DeliveryDataForm = zod.infer<typeof deliveryFormValidationSchema>;
 
 export function Checkout() {
     const { createNewDelivery, clearForm } = useContext(DeliveryContext);
