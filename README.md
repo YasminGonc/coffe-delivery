@@ -11,6 +11,11 @@ O Coffe Delivery foi criado com React e TypeScript, sendo a base do projeto cria
 Foram implandadas como melhoria da aplicação: responsividade, aplicando o conceito de mobile first, e consumo da API Via CEP.
 Os dados do formulário referentes ao endereço estão sendo preenchidas automaticamente a partir do consumo da API Via CEP, desta forma, basta o usuário informar o CEP da entrega que as informações de setor, rua, bairro e cidade já são preenchidas.
 
+### Novidades no projeto
+
+- Consumo da API Via Cep;
+- Responsividade (mobile-first).
+
 ### Principais ferramentas utilizadas
 
 - Construído com [Vite](https://vitejs.dev/);
@@ -22,19 +27,13 @@ Os dados do formulário referentes ao endereço estão sendo preenchidas automat
 
 ## Deploy da aplicação
 
-[]()
+"Em breve"
 <br>
 Caso prefira abrir a aplicação no localhost basta digitar o comando `npm run dev`
 
 ## Vídeo da aplicação
 
-
-
-## Design da aplicação
-
-<img src="assetsGH/home.png" width="600">
-<img src="assetsGH/todo.png" width="600">
-<img src="assetsGH/hitorico.png" width="600">
+"Em breve"
 
 ## Dados complementares
 
