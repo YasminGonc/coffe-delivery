@@ -25,6 +25,13 @@ Os dados do formulário referentes ao endereço estão sendo preenchidas automat
 - [Zod](https://github.com/colinhacks/zod) para validação de formulários;
 - Dados de enderço do usuário foram obtidos através do consumo da API [Via CEP](https://viacep.com.br/).
 
+## Layout da aplicação
+
+<img src="GHAssets/home.png" width="600">
+<img src="GHAssets/cart-blank.png" width="600">
+<img src="GHAssets/cart-fill.png" width="600">
+<img src="GHAssets/success.png" width="600">
+
 ## Deploy da aplicação
 
 "Em breve"
@@ -33,7 +40,7 @@ Caso prefira abrir a aplicação no localhost basta digitar o comando `npm run d
 
 ## Vídeo da aplicação
 
-"Em breve"
+[Coffe Delivery](https://www.loom.com/share/8af0eda9dc9a425e8407fc2f2e9712e7)
 
 ## Dados complementares
 
