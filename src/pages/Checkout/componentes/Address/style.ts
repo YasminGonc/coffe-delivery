@@ -9,30 +9,30 @@ export const OrderContainer = styled.div`
         font-size: 1.125rem;
         font-family: 'Baloo 2', cursive;
         font-weight: 700;
-        color: var(--baseSubtitle);
+        color: ${props => props.theme.baseSubtitle};
     }
 `
 export const AddressContainer = styled.div`
-    background-color: var(--baseCard);
+    background-color: ${props => props.theme.baseCard};
     border-radius: 6px;
     font-size: 0.875rem;
-    color: var(--baseText);
+    color: ${props => props.theme.baseText};
 
-    padding: 1.5rem; //padding desktop 2.5rem
+    padding: 1.5rem; 
 `
 export const HeaderContainer = styled.div`
     display: flex;
     gap: 0.5rem;
-    color: var(--yellowDark);
+    color: ${props => props.theme.yellowDark};
 `
 export const TextContainer = styled.div`
     h3 {
-        color: var(--baseSubtitle);
+        color: ${props => props.theme.baseSubtitle};
         font-size: 1rem;
         font-weight: 400;
     }
     p {
-        color: var(--baseText);
+        color: ${props => props.theme.baseText};
         font-size: 0.875rem;
     }
 `
@@ -46,7 +46,7 @@ export const InputsContainer = styled.div`
         'uf city'
     ;
     gap: 1rem;
-    color: var(--baseLabel);   
+    color: ${props => props.theme.baseLabel};   
 `
 interface InputContainerProps {
     hasErrors?: boolean;
@@ -58,33 +58,33 @@ const InputContainer = styled.div<InputContainerProps>`
     gap: 0.2rem;
 
     &:first-child {
-        margin-top: 1.5rem; //2rem no desktop
+        margin-top: 1.5rem; 
     }
     
     input {
-        height: 2rem; //2.625rem desktop
+        height: 2rem; 
         padding: 0.75rem;
 
-        color: var(--baseText);
+        color: ${props => props.theme.baseText};
         font-size: 0.875rem;
         
         border-radius: 6px;
         border: 1px solid;
-        border-color: ${props => props.hasErrors ? 'var(--warning)' : 'var(--baseButton)'};
-        background-color: var(--baseInput);
+        border-color: ${props => props.hasErrors ? props.theme.warning : props.theme.baseButton};
+        background-color: ${props => props.theme.baseInput};
 
         &:focus {
             outline: 0;
-            border: 2px solid var(--yellowDark);
+            border: 2px solid ${props => props.theme.yellowDark};
         }
 
         &::placeholder {
-            color: var(--baseLabel);
+            color: ${props => props.theme.baseLabel};
         }
 
         &:disabled {
             opacity: 0.8;
-            background-color: var(--baseButton);
+            background-color: ${props => props.theme.baseButton};
         }
     }
 `
@@ -110,5 +110,5 @@ export const InputCity = styled(InputContainer)`
 `
 export const Error = styled.span`
     font-size: 0.625rem;
-    color: var(--warning);
+    color: ${props => props.theme.warning};
 `

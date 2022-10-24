@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
 export const HomeContainer = styled.div`
-    padding: 0 1rem; //padding lateral para o mobile
+    padding: 0 1rem; 
 
     h2 {
         padding: 2rem 0;
-        color: var(--baseSubtitle);
+        color: ${props => props.theme.baseSubtitle};
         font-family: 'Baloo 2', cursive;
     }
 
@@ -44,7 +44,7 @@ export const MenuContainer = styled.div`
 `
 export const CoffeeContainer = styled.div`
     width: 16rem;
-    background-color: var(--baseCard);
+    background-color: ${props => props.theme.baseCard};
     border-radius: 6px 32px 6px 32px;
     font-family: 'Roboto', sans-serif;
 
@@ -78,21 +78,21 @@ export const Tag = styled.span`
     text-transform: uppercase;
     font-weight: 700;
     font-size: 0.625rem;
-    color: var(--yellowDark);
+    color: ${props => props.theme.yellowDark};
 
     margin: 1rem 0 1.25rem 0;
     padding: 0.25rem 0.5rem;
-    background-color: var(--yellowLight);
+    background-color: ${props => props.theme.yellowLight};
     border-radius: 100px;
 `
 export const Title = styled.h3`
     font-family: 'Baloo 2', cursive;
-    color: var(--baseTitle);
+    color: ${props => props.theme.baseTitle};
     font-weight: 700;
     font-size: 1.25rem;
 `
 export const Description = styled.p`
-    color: var(--baseLabel);
+    color: ${props => props.theme.baseLabel};
     font-size: 0.875rem;
     text-align: center;
 
@@ -103,7 +103,7 @@ export const ShoppContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: var(--baseText);
+    color: ${props => props.theme.baseText};
 
     p {
         font-family: 'Baloo 2', cursive;
@@ -127,13 +127,13 @@ export const IconContainer = styled.button`
     display: flex;
     align-items: center;
 
-    color: var(--white);
-    background-color: var(--purple);
+    color: ${props => props.theme.white};
+    background-color: ${props => props.theme.purple};
     border-radius: 6px;
     padding: 0.5rem 0.6rem;
     cursor: pointer;
 
     &:hover {
-        background-color: var(--purpleDark);
+        background-color: ${props => props.theme.purpleDark};
     }
 `

@@ -5,29 +5,29 @@ interface PaymentContainerProps {
 }
 
 export const PaymentContainer = styled.div<PaymentContainerProps>`
-    background-color: var(--baseCard);
+    background-color: ${props => props.theme.baseCard};
     border-radius: 6px;
     border: 1px solid;
     font-size: 0.875rem;
-    color: var(--baseText);
-    border-color: ${props => props.hasError ? 'var(--warning)' : 'transparent'};
+    color: ${props => props.theme.baseText};
+    border-color: ${props => props.hasError ? props.theme.warning : 'transparent'};
 
-    padding: 1.5rem; //padding desktop 2.5rem
+    padding: 1.5rem; 
     margin-bottom: 2rem;
 `
 export const HeaderContainer = styled.div`
     display: flex;
     gap: 0.5rem;
-    color: var(--purple);
+    color: ${props => props.theme.purple};
 `
 export const TextContainer = styled.div`
     h3 {
-        color: var(--baseSubtitle);
+        color: ${props => props.theme.baseSubtitle};
         font-size: 1rem;
         font-weight: 400;
     }
     p {
-        color: var(--baseText);
+        color: ${props => props.theme.baseText};
         font-size: 0.875rem;
     }
 `
@@ -45,8 +45,8 @@ export const InputContainer = styled.div`
     }
 
     input:checked + label {
-        background-color: var(--purpleLight);
-        border: 1px solid var(--purple);
+        background-color: ${props => props.theme.purpleLight};
+        border: 1px solid ${props => props.theme.purple};
     }
 
     label {
@@ -55,20 +55,20 @@ export const InputContainer = styled.div`
         gap: 0.75rem;
 
         padding: 1rem;
-        background-color: var(--baseButton);
+        background-color: ${props => props.theme.baseButton};
         border-radius: 5px;
-        color: var(--baseText);
+        color: ${props => props.theme.baseText};
         text-transform: uppercase;
         cursor: pointer;
 
         svg {
-            color: var(--purple);
+            color: ${props => props.theme.purple};
             width: 1rem;
             height: 1rem;
         }
     }
 
     label:hover {
-        background-color: var(--baseHover);
+        background-color: ${props => props.theme.baseHover};
     }
 `

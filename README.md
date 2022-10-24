@@ -1,8 +1,21 @@
-# coffee-delivery
- 
-Desafio 2 do bootcamp Ignite da Rocketseat.
+# coffee-delivery-plus-croct
+
+## Sobre
+
+O Coffee Delivery é uma página de e-commerce de venda de cafés, desenvolvidada para o challenge do processo seletivo para Customer Service Engineer da Croct.
 <br>
-O Coffee Delivery simula uma página de vendas online de cafés.
+A aplicação conta com um total de 3 páginas: listagem de produtos, carrinho de compras e pedido finalizado. Além disso, a aplicação ganha um plus de personalização com a Lib de React da Croct.
+
+## Tecnologias utilizadas
+
+- Aplicação construída com [Vite](https://vitejs.dev/);
+- [Styled-components](https://styled-components.com/) para estilização;
+- Criação das rotas com [React Router](https://reactrouter.com/en/main);
+- Validação do formulário de entrega com a biblioteca [Zod](https://github.com/colinhacks/zod);
+- API [Via CEP](https://viacep.com.br/) para preencher informações de entrega baseado no CEP fornecido;
+- [Croct Plug React](https://github.com/croct-tech/plug-react) para personalizações.
+
+## Onde a Croct foi aplicada?
 
 ## Construção
 
@@ -23,7 +36,7 @@ Os dados do formulário referentes ao endereço estão sendo preenchidas automat
 - [React Router](https://reactrouter.com/en/main) para criação das rotas da aplicação;
 - [React Hook Form](https://react-hook-form.com/) para lidar com formulários;
 - [Zod](https://github.com/colinhacks/zod) para validação de formulários;
-- Dados de enderço do usuário foram obtidos através do consumo da API [Via CEP](https://viacep.com.br/).
+- Dados de endereço do usuário foram obtidos através do consumo da API [Via CEP](https://viacep.com.br/).
 
 ## Layout da aplicação
 
@@ -45,3 +58,8 @@ Caso prefira abrir a aplicação no localhost basta digitar o comando `npm run d
 ## Dados complementares
 
 - Autor: [Yasmin](https://www.linkedin.com/in/yasmin-goncalves/)
+
+
+## About
+
+Coffee Delivery is a coffee sales e-commerce, developed for the challenge of the selection process for Customer Service Engineer at Croct.

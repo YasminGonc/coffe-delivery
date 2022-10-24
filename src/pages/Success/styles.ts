@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const SuccessContainer = styled.div`
-    margin: 0 1rem; //margin mobile
+    margin: 0 1rem; 
 
     display: flex;
     flex-direction: column;
@@ -31,16 +31,16 @@ export const SuccessContainer = styled.div`
 `
 export const TitleContainer = styled.div`
     h2 {
-        color: var(--yellowDark);
-        font-size: 1.5rem; //2rem desktop
+        color: ${props => props.theme.yellowDark};
+        font-size: 1.5rem; 
         font-family: 'Baloo 2', cursive;
         font-weight: 800;
         margin: 1rem 0 0.25rem 0;
     }
 
     p {
-        color: var(--baseSubtitle);
-        font-size: 1rem; //1.25rem no desktop
+        color: ${props => props.theme.baseSubtitle};
+        font-size: 1rem; 
     }
 
     @media screen and (min-width: 768px) {
@@ -55,7 +55,7 @@ export const DeliveryInfo = styled.div`
     border: 1px solid transparent;
     border-radius: 6px 36px;
     background-clip: padding-box;
-    background-color: var(--background);
+    background-color: ${props => props.theme.background};
 
     display: flex;
     flex-direction: column;
@@ -72,7 +72,7 @@ export const DeliveryInfo = styled.div`
         z-index: -1;
         margin: -1px;
         border-radius: inherit;
-        background: linear-gradient(135deg, #DBAC2C, #8047F8);
+        background: ${props => props.theme.linearGradient};
     }
 
     @media screen and (min-width: 768px) {
@@ -93,17 +93,17 @@ const InfoIcon = styled.div`
     align-items: center;
 
     svg {
-        color: var(--white);
+        color: ${props => props.theme.white};
         width: 1rem;
         height: 1rem;
     }
 `
 export const MapIcon = styled(InfoIcon)`
-    background-color: var(--purple); 
+    background-color: ${props => props.theme.purple}; 
 `
 export const TimerIcon = styled(InfoIcon)`
-    background-color: var(--yellow); 
+    background-color: ${props => props.theme.yellow}; 
 `
 export const DollarIcon = styled(InfoIcon)`
-    background-color: var(--yellowDark); 
+    background-color: ${props => props.theme.yellowDark}; 
 `

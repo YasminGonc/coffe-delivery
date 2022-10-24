@@ -26,13 +26,13 @@ export const ImageContainer = styled.div`
 `
 export const AddToCart = styled.button`
     padding: 0.5rem;
-    background-color: var(--yellowLight);
+    background-color: ${props => props.theme.yellowLight};
     border-radius: 6px;
-    color: var(--yellowDark);
+    color: ${props => props.theme.yellowDark};
     cursor: pointer;
 
     &:hover {
-        background-color: var(--yellowDark);
-        color: var(--yellowLight);
+        background-color: ${props => props.theme.yellowDark};
+        color: ${props => props.theme.yellowLight};
     }
 `

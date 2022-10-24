@@ -28,20 +28,20 @@ export const LocationContainer = styled.div`
     align-items: center;
     gap: 0.465rem;
 
-    background: var(--purpleLight);
+    background: ${props => props.theme.purpleLight};
     border-radius: 6px;
     padding: 0.5rem;
 
     span {
         font-size: 0.875rem;
-        color: var(--purpleDark);
+        color: ${props => props.theme.purpleDark};
     }
 `
 export const MapIcon = styled(MapPin)`
-    color: var(--purple);
+    color: ${props => props.theme.purple};
 `
 export const CartIcon = styled(ShoppingCart)`
-    color: var(--yellowDark);
+    color: ${props => props.theme.yellowDark};
     width: 1rem;
     height: 1rem;
 `
@@ -57,7 +57,7 @@ export const CartNav = styled(NavLink)`
     align-items: center;
     position: relative;
     
-    background: var(--yellowLight);
+    background: ${props => props.theme.yellowLight};
     padding: 0.5rem;
     border-radius: 6px;
 `
@@ -72,11 +72,11 @@ export const OrderAmountContainer = styled.div<OrderAmountContainerProps>`
     top: -0.5rem;
     right: -0.5rem;
 
-    background-color: var(--yellowDark);
+    background-color: ${props => props.theme.yellowDark};
     border-radius: 50%;
 
     font-size: 0.625rem;
-    color: var(--white);
+    color: ${props => props.theme.white};
 
     width: 1rem;
     height: 1rem;

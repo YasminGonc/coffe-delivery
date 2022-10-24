@@ -1,8 +1,7 @@
 import styled from 'styled-components'
-import { Form } from 'react-router-dom'
 
 export const CheckoutContainer = styled.div`
-    padding: 0 1rem; //padding lateral para o mobile
+    padding: 0 1rem; 
 
     form {
         display: flex;

@@ -8,14 +8,14 @@ export const BannerContainer = styled.div`
     padding: 1rem 0; 
 
     h1 {
-        color: var(--baseTitle);
+        color: ${props => props.theme.baseTitle};
         font-weight: 800;
         font-family: 'Baloo 2', cursive;
     }
 
     p {
         padding: 1rem 0;
-        color: var(--baseSubtitle);
+        color: ${props => props.theme.baseSubtitle};
         font-size: 0.875rem;
     } 
 
@@ -70,7 +70,7 @@ export const IconsContainer = styled.div`
     padding-bottom: 1rem;
     
     font-size: 0.75rem;
-    color: var(--baseText);
+    color: ${props => props.theme.baseText};
 
     @media screen and (min-width: 768px) {
         display: grid;
@@ -97,14 +97,14 @@ const Icon = styled.div`
     border-radius: 50%;
 `
 export const IconShop = styled(Icon)`
-    background: var(--yellowDark);
+    background: ${props => props.theme.yellowDark};
 `
 export const IconTimer = styled(Icon)`
-    background: var(--yellow);
+    background: ${props => props.theme.yellow};
 `
 export const IconPack = styled(Icon)`
-    background: var(--baseText);
+    background: ${props => props.theme.baseText};
 `
 export const IconCoffee = styled(Icon)`
-    background: var(--purple);
+    background: ${props => props.theme.purple};
 `

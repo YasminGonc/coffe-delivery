@@ -10,9 +10,9 @@ export const CartContainer = styled.div`
     }
 `
 export const ItensContainer = styled.div`
-    background-color: var(--baseCard);
+    background-color: ${props => props.theme.baseCard};
     border-radius: 6px 44px;
-    padding: 1.5rem; //desktop 2.5rem
+    padding: 1.5rem; 
 
     display: flex;
     flex-direction: column;
@@ -27,7 +27,7 @@ export const ItemContainer = styled.div`
     ;
     gap: 0.5rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--baseButton);
+    border-bottom: 1px solid ${props => props.theme.baseButton};
 
     img {
         width: 95%;
@@ -43,7 +43,7 @@ export const ItemContainer = styled.div`
     }
 `
 export const CoffeeName = styled.p`
-    color: var(--baseSubtitle);
+    color: ${props => props.theme.baseSubtitle};
     grid-area: coffee;
     font-size: 0.875rem; 
 
@@ -66,7 +66,7 @@ export const ButtonRemove = styled.button`
     font-size: 0.75rem;
 
     padding: 0.5rem;
-    background-color: var(--baseButton);
+    background-color: ${props => props.theme.baseButton};
     border-radius: 6px;
     cursor: pointer;
 
@@ -78,11 +78,11 @@ export const ButtonRemove = styled.button`
     svg {
         width: 0.75rem;
         height: 0.75rem;
-        color: var(--purple);
+        color: ${props => props.theme.purple};
     }
 
     &:hover {
-        background-color: var(--baseHover);
+        background-color: ${props => props.theme.baseHover};
     }
 
     @media screen and (min-width: 1440px) {
@@ -108,20 +108,20 @@ export const TotalItem = styled.div`
 export const Total = styled.p`
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--baseSubtitle);
+    color: ${props => props.theme.baseSubtitle};
 `
 export const ConfirmOrder = styled.button`
-    background-color: var(--yellow);
+    background-color: ${props => props.theme.yellow};
     border-radius: 6px;
     padding: 0.75rem;
 
     font-size: 0.875rem;
     text-transform: uppercase;
-    color: var(--white);
+    color: ${props => props.theme.white};
     cursor: pointer;
 
     &:hover {
-        background-color: var(--yellowDark);
+        background-color: ${props => props.theme.yellowDark};
     }
 `
 export const NoOrder = styled.div`

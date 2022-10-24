@@ -6,7 +6,7 @@ export const ButtonsContainer = styled.div`
     justify-content: center;
     gap: 0.25rem;
     padding: 0.25rem;
-    background-color: var(--baseButton);
+    background-color: ${props => props.theme.baseButton};
     border-radius: 6px;
 
     p {
@@ -18,13 +18,13 @@ export const ButtonsContainer = styled.div`
     button {
         display: flex;
         align-items: center;
-        color: var(--purple);
+        color: ${props => props.theme.purple};
         background-color: transparent;
         height: 1rem;
         cursor: pointer;
     }
 
     button:hover {
-        color: var(--purpleDark);
+        color: ${props => props.theme.purpleDark};
     }
 `
