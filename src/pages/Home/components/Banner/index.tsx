@@ -2,39 +2,48 @@ import { BannerContainer, IconCoffee, IconContainer, IconPack, IconsContainer, I
 
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import banner from '../../../../assets/bannerHome.png'
+import { Personalization } from '@croct/plug-react'
 
 export function Banner() {
-    return(
+    return (
         <BannerContainer>
             <div>
-                <h1>Encontre o café perfeito para qualquer hora do dia</h1>
+                <Personalization expression="location's city">
+                    {(city: string) => city
+                        ? <h1>Está na correia de {city}? Encontre o café perfeito para qualquer hora do dia</h1>
+                        : <h1>Encontre o café perfeito para qualquer hora do dia</h1>}
+                </Personalization>
                 <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
 
                 <IconsContainer>
                     <IconContainer>
                         <IconShop>
-                            <ShoppingCart weight='fill' color='#FFFFFF'/>
+                            <ShoppingCart weight='fill' color='#FFFFFF' />
                         </IconShop>
                         <span>Compra simples e segura</span>
                     </IconContainer>
 
                     <IconContainer>
                         <IconTimer>
-                            <Timer weight='fill' color='#FFFFFF'/>
+                            <Timer weight='fill' color='#FFFFFF' />
                         </IconTimer>
-                        <span>Entrega rápida e rastreada</span>
+                        <Personalization expression="location's city">
+                            {(city: string) => city
+                                ? <span>Entrega rápida e rastreada para {city}</span>
+                                : <span>Entrega rápida e rastreada</span>}
+                        </Personalization>
                     </IconContainer>
 
                     <IconContainer>
                         <IconPack>
-                            <Package weight='fill' color='#FFFFFF'/>
+                            <Package weight='fill' color='#FFFFFF' />
                         </IconPack>
                         <span>Embalagem mantém o café intacto</span>
                     </IconContainer>
 
                     <IconContainer>
                         <IconCoffee>
-                            <Coffee weight='fill' color='#FFFFFF'/>
+                            <Coffee weight='fill' color='#FFFFFF' />
                         </IconCoffee>
                         <span>O café chega fresquinho até você</span>
                     </IconContainer>

@@ -4,16 +4,20 @@ import Logo from '../../assets/logo.png'
 import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { CoffeeOrderContext } from '../../context/CoffeeOrderContext';
-import { DeliveryContext } from '../../context/DeliveryContext';
+
+import croct from '@croct/plug';
+import { useEvaluation } from '@croct/plug-react';
+
+croct.plug({appId: '00000000-0000-0000-0000-000000000000'});
 
 interface HeaderProps {
     hiddenCart?: boolean;
 }
 
 export function Header({ hiddenCart }: HeaderProps) {
-    const { orderQuantity, showOrderQuantity } = useContext(CoffeeOrderContext);
+    const location = useEvaluation<string>("location's city");
     
-    const { deliveryInfos } = useContext(DeliveryContext);
+    const { orderQuantity, showOrderQuantity } = useContext(CoffeeOrderContext);
  
     return(
         <HeaderContainer>
@@ -22,10 +26,10 @@ export function Header({ hiddenCart }: HeaderProps) {
             </NavLink>
 
             <IconsContainer>
-                {deliveryInfos?.cidade && 
+                {location && 
                     <LocationContainer>
                         <MapIcon weight='fill' />
-                        <span>{deliveryInfos.cidade}, {deliveryInfos.uf}</span>
+                        <span>{location}</span>
                     </LocationContainer>
                 }
 

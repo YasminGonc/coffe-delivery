@@ -1,8 +1,13 @@
 import { AddRemove, ButtonRemove, CartContainer, CoffeeName, ConfirmOrder, ItemContainer, ItensContainer, NoOrder, Price, Total, TotalContainer, TotalItem } from './style'
 
 import { Trash, Coffee } from 'phosphor-react'
-import { useContext } from 'react'
+import { Suspense, useCallback, useContext } from 'react'
 import { CoffeeOrderContext } from '../../../../context/CoffeeOrderContext'
+import croct from '@croct/plug';
+import { EmptyCartPersonalization } from './EmptyCartPersonalization';
+import { Personalization, useCroct } from '@croct/plug-react';
+
+croct.plug({ appId: '00000000-0000-0000-0000-000000000000' });
 
 export function Cart() {
     const { coffeeOrder, coffeeBill, removeCoffeeFromOrder } = useContext(CoffeeOrderContext);
@@ -11,6 +16,21 @@ export function Cart() {
     function handleRemoveCoffeeFromOrder(id: string) {
         removeCoffeeFromOrder(id);
     }
+
+    const croct = useCroct();
+
+    const setDate = useCallback(() => {
+        croct.evaluate("today's weekday")
+            .then(date => {
+                if (date == '1') {
+                    alert('Segunda é dia de frete grátis');
+                }
+            });
+    }, [croct]);
+
+    // if (hasOrders) {
+    //     setDate();
+    // }
 
     return (
         <CartContainer>
@@ -38,6 +58,9 @@ export function Cart() {
                         <Coffee size={24} />
                         <p>Nenhum item selecionado.</p>
                         <p>Volte para página principal para escolher seu café.</p>
+                        <Suspense fallback="Personalizing suggestions">
+                            <EmptyCartPersonalization />
+                        </Suspense>
                     </NoOrder>
                 }
 
@@ -48,14 +71,31 @@ export function Cart() {
                                 <p>Total de itens</p>
                                 <p>R$ {coffeeBill.toFixed(2).toString().replace('.', ',')}</p>
                             </TotalItem>
-                            <TotalItem>
-                                <p>Entrega</p>
-                                <p>R$ 3,50</p>
-                            </TotalItem>
-                            <TotalItem>
-                                <Total>Total</Total>
-                                <Total>R$ {(coffeeBill + 3.5).toFixed(2).toString().replace('.', ',')}</Total>
-                            </TotalItem>
+                            <Personalization expression="today's weekday">
+                                {(date: string) => date == '1'
+                                    ? <>
+                                        <TotalItem>
+                                            <p>Entrega</p>
+                                            <p>R$ 0,00</p>
+                                        </TotalItem>
+                                        <TotalItem>
+                                            <Total>Total</Total>
+                                            <Total>R$ {(coffeeBill).toFixed(2).toString().replace('.', ',')}</Total>
+                                        </TotalItem>
+                                    </>
+                                    : <>
+                                        <TotalItem>
+                                            <p>Entrega</p>
+                                            <p>R$ 3,50</p>
+                                        </TotalItem>
+                                        <TotalItem>
+                                            <Total>Total</Total>
+                                            <Total>R$ {(coffeeBill + 3.5).toFixed(2).toString().replace('.', ',')}</Total>
+                                        </TotalItem>
+                                    </>
+                                }
+
+                            </Personalization>
                         </TotalContainer>
 
                         <ConfirmOrder type='submit'>confirmar pedido</ConfirmOrder>

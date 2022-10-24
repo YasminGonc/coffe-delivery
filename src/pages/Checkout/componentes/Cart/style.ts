@@ -6,6 +6,7 @@ export const CartContainer = styled.div`
     
     h2 {
         margin-bottom: 1rem;
+        font-size: 1.125rem;
     }
 `
 export const ItensContainer = styled.div`
