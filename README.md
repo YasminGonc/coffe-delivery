@@ -1,4 +1,4 @@
-# coffe-delivery
+# coffee-delivery
  
 Desafio 2 do bootcamp Ignite da Rocketseat.
 <br>
