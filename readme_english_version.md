@@ -28,7 +28,7 @@ It is worth highlighting that the same validation expression was used in the Hea
 <br>
 The fallback attribute was used with the negative Boolean value, to prevent application malfunction.
 <br>
-App  component code
+App component code
 
 ```typescript
 <Suspense fallback="Customizing theme">
@@ -53,8 +53,32 @@ Something similar was done with the Header component to show an element with the
 
 <img src="GHAssets/header-location.png" width="600">
 
+The code logic to implement this item on the screen was a little different from the one used in the banner. The location variable was defined by the hook `useEvaluation`. The variable type is based on the expression response, in this case can be a string or null if the location is not available. The location icon is just shown on the scrren if the location is a string type.
+<br>
+Header component code
+
+```typescript
+const location = useEvaluation<string | null>("location's city");
+
+(...)
+
+{location &&
+    <LocationContainer>
+        <MapIcon weight='fill' />
+        <span>{location}</span>
+    </LocationContainer>
+}
+```
+
 3. Coffee suggestions based on the weekday if the cart is empty
+
+If no items are selected, on the cart page some coffee suggestions are going to be shown based on the weekday. To do this kind of personalization I chose to create a React component `EmptyCartPersonalization` and use the `usePersinalization` hook. The expression used to evaluate was “today’s weekday” and the type return is a string.
+<br>
+I highlight that in this case, a `Slot` component has more advantages, letting the code clean. The `Slot` component was not used because is necessary an id configuration for this usage. The app ID received had a configuration to show different messages based on the user’s persona.
+
 4. Discount coupon alert
+
+At the checkout, the application’s user can check if a discount is available. This kind of evaluation was done with the useCroct hook and the useCallback hook.
 
 ## Video application details (in Portuguese)
 

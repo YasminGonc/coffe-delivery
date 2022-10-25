@@ -1,7 +1,7 @@
-import { Minus, Plus } from "phosphor-react";
-import { useContext } from "react";
-import { CoffeeOrderContext } from "../../context/CoffeeOrderContext";
-import { ButtonsContainer } from "./style";
+import { Minus, Plus } from 'phosphor-react';
+import { useContext } from 'react';
+import { CoffeeOrderContext } from '../../context/CoffeeOrderContext';
+import { ButtonsContainer } from './style';
 
 interface ButtonAddRemoveProps {
     quantity: number;

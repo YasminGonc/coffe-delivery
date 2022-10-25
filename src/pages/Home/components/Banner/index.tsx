@@ -1,8 +1,7 @@
-import { BannerContainer, IconCoffee, IconContainer, IconPack, IconsContainer, IconShop, IconTimer } from './style'
-
-import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
-import banner from '../../../../assets/bannerHome.png'
-import { Personalization } from '@croct/plug-react'
+import { BannerContainer, IconCoffee, IconContainer, IconPack, IconsContainer, IconShop, IconTimer } from './style';
+import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react';
+import banner from '../../../../assets/bannerHome.png';
+import { Personalization } from '@croct/plug-react';
 
 export function Banner() {
     return (

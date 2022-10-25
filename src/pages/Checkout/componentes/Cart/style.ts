@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { ButtonAddRemove } from '../../../../components/ButtonAddRemove'
+import styled from 'styled-components';
+import { ButtonAddRemove } from '../../../../components/ButtonAddRemove';
 
 export const CartContainer = styled.div`
     margin-bottom: 2rem;

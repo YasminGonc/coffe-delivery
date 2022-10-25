@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import bgImage from '../../../../assets/background.png'
+import styled from 'styled-components';
+import bgImage from '../../../../assets/background.png';
 
 export const BannerContainer = styled.div`
     display: flex;

@@ -74,7 +74,7 @@ const location = useEvaluation<string | null>("location's city");
 3. Sugestões de cafés baseado no dia da semana caso o carrinho esteja vazio
 
 Caso o usuário acesse o carrinho de compras sem nenhum café selecionado, sugestões serão apresentadas baseado no dia da semana. 
-Para realizar esse tipo de personalização optei por criar o componente React `EmptyCartPersonalization` e utilizar o hook `usePersonalization`. A expressão avaliada foi "today´s weekday", sendo a tipagem de retorno uma string, neste caso números entre 0 e 6, onde 0 é referente a domingo, 1 segunda e assim por diante. O retorno desse componente são as sugestões de cafés, diferentes para cada dia da semana.
+Para realizar esse tipo de personalização optei por criar o componente React `EmptyCartPersonalization` e utilizar o hook `usePersonalization`. A expressão avaliada foi "today´s weekday", sendo a tipagem de retorno uma string, neste caso números entre 0 e 6. O retorno desse componente são as sugestões de cafés, diferentes para cada dia da semana.
 <br>
 O componente `EmptyCartPersonalization` foi utilizado dentro do componente `Cart` e envelopado pelo `Suspense` do React.
 <br>

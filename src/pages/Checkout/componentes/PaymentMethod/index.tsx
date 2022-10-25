@@ -1,7 +1,6 @@
-import { HeaderContainer, InputContainer, PaymentContainer, TextContainer } from './style'
-
-import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
-import { useFormContext } from 'react-hook-form'
+import { HeaderContainer, InputContainer, PaymentContainer, TextContainer } from './style';
+import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react';
+import { useFormContext } from 'react-hook-form';
 
 interface ErrorsType {
     errors: {

@@ -1,7 +1,6 @@
-import { MapPin, ShoppingCart } from 'phosphor-react'
-import { NavLink } from 'react-router-dom'
-
-import styled from 'styled-components'
+import { MapPin, ShoppingCart } from 'phosphor-react';
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
     padding: 1rem;

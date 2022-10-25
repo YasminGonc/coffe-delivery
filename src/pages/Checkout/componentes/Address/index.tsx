@@ -1,10 +1,9 @@
-import { AddressContainer, HeaderContainer, InputCep, InputCity, InputComplement, InputNumber, InputsContainer, InputStreet, InputUf, OrderContainer, TextContainer, Error } from './style'
-
-import { MapPinLine } from 'phosphor-react'
-import { PaymentMethod } from '../PaymentMethod'
-import { useFormContext } from 'react-hook-form'
-import { useContext } from 'react'
-import { DeliveryContext } from '../../../../context/DeliveryContext'
+import { AddressContainer, HeaderContainer, InputCep, InputCity, InputComplement, InputNumber, InputsContainer, InputStreet, InputUf, OrderContainer, TextContainer, Error } from './style';
+import { MapPinLine } from 'phosphor-react';
+import { PaymentMethod } from '../PaymentMethod';
+import { useFormContext } from 'react-hook-form';
+import { useContext } from 'react';
+import { DeliveryContext } from '../../../../context/DeliveryContext';
 
 interface ErrorsType {
     errors: {

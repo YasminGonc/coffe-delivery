@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useEffect, useReducer, useState } from 'react'
+import { createContext, ReactNode, useEffect, useReducer, useState } from 'react';
 import { coffeeMenu } from '../data/coffeeMenu';
 
 interface CoffeeOrder {

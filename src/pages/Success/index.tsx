@@ -1,11 +1,10 @@
-import { DeliveryInfo, DollarIcon, Info, MapIcon, SuccessContainer, TimerIcon, TitleContainer } from './styles'
-
-import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
-import imageSuccess from '../../assets/success-img.png'
-import { useContext } from 'react'
-import { DeliveryContext } from '../../context/DeliveryContext'
-import { Header } from '../../components/Header'
-import { LayoutContainer } from '../../layout/DefaultLayout/style'
+import { DeliveryInfo, DollarIcon, Info, MapIcon, SuccessContainer, TimerIcon, TitleContainer } from './styles';
+import { CurrencyDollar, MapPin, Timer } from 'phosphor-react';
+import imageSuccess from '../../assets/success-img.png';
+import { useContext } from 'react';
+import { DeliveryContext } from '../../context/DeliveryContext';
+import { Header } from '../../components/Header';
+import { LayoutContainer } from '../../layout/DefaultLayout/style';
 
 export function Success() {
     const { deliveryInfos } = useContext(DeliveryContext);

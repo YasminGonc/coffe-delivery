@@ -1,13 +1,10 @@
-import { CartIcon, CartNav, CartNavContainer, HeaderContainer, IconsContainer, LocationContainer, MapIcon, OrderAmountContainer } from './style'
-
-import Logo from '../../assets/logo.png'
-import HalloweenLogo from '../../assets/logo-halloween.png'
-import { NavLink } from 'react-router-dom'
-import { Suspense, useContext } from 'react'
+import { CartIcon, CartNav, CartNavContainer, HeaderContainer, IconsContainer, LocationContainer, MapIcon, OrderAmountContainer } from './style';
+import Logo from '../../assets/logo.png';
+import HalloweenLogo from '../../assets/logo-halloween.png';
+import { NavLink } from 'react-router-dom';
+import { Suspense, useContext } from 'react';
 import { CoffeeOrderContext } from '../../context/CoffeeOrderContext';
-
 import { Personalization, useEvaluation } from '@croct/plug-react';
-
 
 interface HeaderProps {
     hiddenCart?: boolean;

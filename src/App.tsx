@@ -1,13 +1,13 @@
-import { Personalization } from '@croct/plug-react'
-import { Suspense } from 'react'
-import { BrowserRouter } from 'react-router-dom'
-import { ThemeProvider } from 'styled-components'
-import { CoffeeOrderProvider } from './context/CoffeeOrderContext'
-import { DeliveryProvider } from './context/DeliveryContext'
-import { Router } from './Router'
-import { GlobalStyle } from './styles/global'
-import { defaultTheme } from './styles/themes/defaultTheme'
-import { halloweenTheme } from './styles/themes/halloweenTheme'
+import { Personalization } from '@croct/plug-react';
+import { Suspense } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import { CoffeeOrderProvider } from './context/CoffeeOrderContext';
+import { DeliveryProvider } from './context/DeliveryContext';
+import { Router } from './Router';
+import { GlobalStyle } from './styles/global';
+import { defaultTheme } from './styles/themes/defaultTheme';
+import { halloweenTheme } from './styles/themes/halloweenTheme';
 
 export function App() {
   return (

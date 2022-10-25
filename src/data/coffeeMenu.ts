@@ -1,17 +1,17 @@
-import expressoTradicional from '../assets/expresso-tradicional.png'
-import expressoAmericano from '../assets/expresso-americano.png'
-import expressoCremoso from '../assets/expresso-cremoso.png'
-import expressoGelado from '../assets/cafe-gelado.png'
-import cafeComLeite from '../assets/cafe-com-leite.png'
-import latte from '../assets/latte.png'
-import cappuccino from '../assets/cappuccino.png'
-import macchiato from '../assets/macchiato.png'
-import mochaccino from '../assets/mochaccino.png'
-import chocolateQuente from '../assets/chocolate-quente.png'
-import cubano from '../assets/cubano.png'
-import havaiano from '../assets/havaiano.png'
-import arabe from '../assets/arabe.png'
-import irlandes from '../assets/irlandes.png'
+import expressoTradicional from '../assets/expresso-tradicional.png';
+import expressoAmericano from '../assets/expresso-americano.png';
+import expressoCremoso from '../assets/expresso-cremoso.png';
+import expressoGelado from '../assets/cafe-gelado.png';
+import cafeComLeite from '../assets/cafe-com-leite.png';
+import latte from '../assets/latte.png';
+import cappuccino from '../assets/cappuccino.png';
+import macchiato from '../assets/macchiato.png';
+import mochaccino from '../assets/mochaccino.png';
+import chocolateQuente from '../assets/chocolate-quente.png';
+import cubano from '../assets/cubano.png';
+import havaiano from '../assets/havaiano.png';
+import arabe from '../assets/arabe.png';
+import irlandes from '../assets/irlandes.png';
 
 export const coffeeMenu = [
     {

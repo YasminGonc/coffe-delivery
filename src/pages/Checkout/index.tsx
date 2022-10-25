@@ -1,14 +1,13 @@
-import { CheckoutContainer } from './style'
-
-import { useForm, FormProvider } from 'react-hook-form'
-import * as zod from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Address } from './componentes/Address'
-import { Cart } from './componentes/Cart'
-import { useNavigate } from 'react-router-dom'
-import { DeliveryContext } from '../../context/DeliveryContext'
-import { useContext } from 'react'
-import { CoffeeOrderContext } from '../../context/CoffeeOrderContext'
+import { CheckoutContainer } from './style';
+import { useForm, FormProvider } from 'react-hook-form';
+import * as zod from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Address } from './componentes/Address';
+import { Cart } from './componentes/Cart';
+import { useNavigate } from 'react-router-dom';
+import { DeliveryContext } from '../../context/DeliveryContext';
+import { useContext } from 'react';
+import { CoffeeOrderContext } from '../../context/CoffeeOrderContext';
 
 const deliveryFormValidationSchema = zod.object({
     cep: zod.string().regex(/^[0-9]{5}\-?[0-9]{3}$/, 'Preencha um CEP válido Ex.: 03064-000'),

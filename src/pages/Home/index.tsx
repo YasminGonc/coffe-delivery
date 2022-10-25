@@ -1,10 +1,9 @@
-import { CoffeeContainer, Description, HomeContainer, IconContainer, MenuContainer, QuantityContainer, ShoppContainer, Tag, TagContainer, Title } from './style'
-
-import { Banner } from './components/Banner'
-import { ShoppingCart } from 'phosphor-react'
-import { ButtonAddRemove } from '../../components/ButtonAddRemove'
-import { useContext } from 'react'
-import { CoffeeOrderContext } from '../../context/CoffeeOrderContext'
+import { CoffeeContainer, Description, HomeContainer, IconContainer, MenuContainer, QuantityContainer, ShoppContainer, Tag, TagContainer, Title } from './style';
+import { Banner } from './components/Banner';
+import { ShoppingCart } from 'phosphor-react';
+import { ButtonAddRemove } from '../../components/ButtonAddRemove';
+import { useContext } from 'react';
+import { CoffeeOrderContext } from '../../context/CoffeeOrderContext';
 
 export function Home() {
     const { coffeeOrderMenu, orderQuantity,showComponentWithOrderQuantity } = useContext(CoffeeOrderContext);
