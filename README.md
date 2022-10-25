@@ -96,6 +96,10 @@ Na finalização do pedido o usuário pode verificar a existência de cupons de 
 <br>
 Tal função foi criada com o apoio do useCallback do React e o hook useCroct, que dá acesso as funções da lib de JS. 
 
+## Detalhes da aplicação em vídeo
+
+https://clipchamp.com/watch/c1S9uCL3e4W
+
 ## Layout da aplicação
 
 <img src="GHAssets/home.png" width="600">
