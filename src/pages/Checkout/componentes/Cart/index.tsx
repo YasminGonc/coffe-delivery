@@ -1,5 +1,4 @@
 import { AddRemove, ButtonRemove, CartContainer, CoffeeName, ConfirmOrder, DiscountButton, ItemContainer, ItensContainer, NoOrder, Price, Total, TotalContainer, TotalItem } from './style'
-
 import { Trash, Coffee } from 'phosphor-react'
 import { Suspense, useCallback, useContext } from 'react'
 import { CoffeeOrderContext } from '../../../../context/CoffeeOrderContext'
@@ -76,25 +75,19 @@ export function Cart() {
                                 <p>R$ {coffeeBill.toFixed(2).toString().replace('.', ',')}</p>
                             </TotalItem>
                             <Personalization expression="today's weekday">
-                                {(date: string) => date == '1'
-                                    ? <>
+                                {(date: string) =>
+                                    <>
                                         <TotalItem>
                                             <p>Entrega</p>
-                                            <p>R$ 0,00</p>
+                                            <p>{date == '1'} ? R$ 0,00 : R$ 3,50</p>
                                         </TotalItem>
                                         <TotalItem>
                                             <Total>Total</Total>
-                                            <Total>R$ {(coffeeBill).toFixed(2).toString().replace('.', ',')}</Total>
-                                        </TotalItem>
-                                    </>
-                                    : <>
-                                        <TotalItem>
-                                            <p>Entrega</p>
-                                            <p>R$ 3,50</p>
-                                        </TotalItem>
-                                        <TotalItem>
-                                            <Total>Total</Total>
-                                            <Total>R$ {(coffeeBill + 3.5).toFixed(2).toString().replace('.', ',')}</Total>
+                                            <Total>
+                                                {(date == '1')} 
+                                                    ? R$ {(coffeeBill).toFixed(2).toString().replace('.', ',')}
+                                                    : R$ {(coffeeBill + 3.5).toFixed(2).toString().replace('.', ',')}
+                                                </Total>
                                         </TotalItem>
                                     </>
                                 }
