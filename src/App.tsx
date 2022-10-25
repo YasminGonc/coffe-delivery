@@ -14,24 +14,15 @@ export function App() {
     <BrowserRouter>
       <Suspense fallback="Customizing theme">
         <Personalization expression="today's day is 31 and today's month is 10" fallback={false}>
-          {(isHalloween: boolean) => isHalloween
-            ? <ThemeProvider theme={halloweenTheme}>
+          {(isHalloween: boolean) =>
+            <ThemeProvider theme={isHalloween ? halloweenTheme : defaultTheme}>
               <CoffeeOrderProvider>
                 <DeliveryProvider>
                   <Router />
                 </DeliveryProvider>
               </CoffeeOrderProvider>
               <GlobalStyle />
-            </ThemeProvider>
-            : <ThemeProvider theme={defaultTheme}>
-              <CoffeeOrderProvider>
-                <DeliveryProvider>
-                  <Router />
-                </DeliveryProvider>
-              </CoffeeOrderProvider>
-              <GlobalStyle />
-            </ThemeProvider>
-          }
+            </ThemeProvider>}
         </Personalization>
       </Suspense>
     </BrowserRouter>

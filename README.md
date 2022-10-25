@@ -19,8 +19,7 @@ A aplicação conta com um total de 3 páginas: listagem de produtos, carrinho d
 
 1. Seleção do tema da aplicação baseado na data comemorativa
 
-Para definição do tema da aplicação foi empregado o recurso theme do Styled-Components, sendo possível variar o tema (cores) da aplicação. É um recurso bastante utilizado quando há temas dark e light, por exemplo, no entanto eles são alternados a partir da ação de click do usuário.
-Baseado nessa ideia de alternância de temas, utilizei os recursos de personalização da Croct para fazer a mudança entre os temas da aplicação (default e halloween). O tema halloween será aplicado exclusivamente no dia 31/10, essa troca será feita de forma automática.
+Baseado na ideia de alternância de temas, utilizei os recursos de personalização da Croct para fazer a mudança entre os temas da aplicação (default e halloween). O tema halloween será aplicado exclusivamente no dia 31/10, essa troca será feita de forma automática.
 <br> 
 Para que essa ação fosse possível, dentro do arquivo App.tsx, por volta do componente ThemeProvider foi utilizado o componente `Personalization` com a expressão de validação: "today's day is 31 and today's month is 10". Essa expressão retornará um valor booleano, para o caso verdadeiro o tema de halloween será aplicado, caso seja falso o tema padrão será aplicado.
 A mesma ideia pode ser adaptada para outras datas comemorativas como Natal, Dia dos Namorados e Dia das Mães, bastando trocar a expressão de validação e o tema.
@@ -33,27 +32,18 @@ Código do componente App:
 
 ```typescript
 <Suspense fallback="Customizing theme">
-    <Personalization expression="today's day is 31 and today's month is 10" fallback={false}>
-        {(isHalloween: boolean) => isHalloween
-            ? <ThemeProvider theme={halloweenTheme}>
+        <Personalization expression="today's day is 31 and today's month is 10" fallback={false}>
+          {(isHalloween: boolean) =>
+            <ThemeProvider theme={isHalloween ? halloweenTheme : defaultTheme}>
               <CoffeeOrderProvider>
                 <DeliveryProvider>
                   <Router />
                 </DeliveryProvider>
               </CoffeeOrderProvider>
               <GlobalStyle />
-            </ThemeProvider>
-            : <ThemeProvider theme={defaultTheme}>
-              <CoffeeOrderProvider>
-                <DeliveryProvider>
-                  <Router />
-                </DeliveryProvider>
-              </CoffeeOrderProvider>
-              <GlobalStyle />
-            </ThemeProvider>
-        }
-    </Personalization>
-</Suspense>
+            </ThemeProvider>}
+        </Personalization>
+      </Suspense>
 ```
 2. Frases personalizadas baseadas na localização do usuário
 

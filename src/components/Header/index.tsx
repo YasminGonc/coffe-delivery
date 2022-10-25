@@ -6,10 +6,8 @@ import { NavLink } from 'react-router-dom'
 import { Suspense, useContext } from 'react'
 import { CoffeeOrderContext } from '../../context/CoffeeOrderContext';
 
-import croct from '@croct/plug';
 import { Personalization, useEvaluation } from '@croct/plug-react';
 
-croct.plug({ appId: '00000000-0000-0000-0000-000000000000' });
 
 interface HeaderProps {
     hiddenCart?: boolean;
@@ -24,12 +22,9 @@ export function Header({ hiddenCart }: HeaderProps) {
         <HeaderContainer>
             <Suspense fallback="Customizing logo theme">
                 <Personalization expression="today's day is 31 and today's month is 10" fallback={false}>
-                    {(isHalloween: boolean) => isHalloween
-                        ? <NavLink to='/' title='Home'>
-                            <img src={HalloweenLogo} />
-                        </NavLink>
-                        : <NavLink to='/' title='Home'>
-                            <img src={Logo} />
+                    {(isHalloween: boolean) =>
+                        <NavLink to='/' title='Home'>
+                            <img src={isHalloween ? HalloweenLogo : Logo} />
                         </NavLink>
                     }
                 </Personalization>
