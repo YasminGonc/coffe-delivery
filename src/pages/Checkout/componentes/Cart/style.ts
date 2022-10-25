@@ -127,3 +127,18 @@ export const ConfirmOrder = styled.button`
 export const NoOrder = styled.div`
     text-align: center;
 `
+export const DiscountButton = styled.button`
+    width: max-content;
+    padding: 0.5rem;
+    cursor: pointer;
+
+    background-color: ${props => props.theme.yellowLight};
+    border-radius: 6px;
+    color: ${props => props.theme.yellow};
+    font-size: 0.875rem;
+
+    &:hover {
+        background-color: ${props => props.theme.yellow};
+        color: ${props => props.theme.yellowLight};
+    }
+`

@@ -1,4 +1,5 @@
 import { Personalization } from '@croct/plug-react'
+import { Suspense } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { CoffeeOrderProvider } from './context/CoffeeOrderContext'
@@ -11,31 +12,28 @@ import { halloweenTheme } from './styles/themes/halloweenTheme'
 export function App() {
   return (
     <BrowserRouter>
-      <Personalization expression="today's day is 31 and today's month is 10">
-        {(isHalloween: boolean) => isHalloween
-          ? <ThemeProvider theme={halloweenTheme}>
-            <CoffeeOrderProvider>
-              <DeliveryProvider>
-                <Router />
-              </DeliveryProvider>
-
-            </CoffeeOrderProvider>
-
-            <GlobalStyle />
-          </ThemeProvider>
-          : <ThemeProvider theme={defaultTheme}>
-            <CoffeeOrderProvider>
-              <DeliveryProvider>
-                <Router />
-              </DeliveryProvider>
-
-            </CoffeeOrderProvider>
-
-            <GlobalStyle />
-          </ThemeProvider>
-        }
-
-      </Personalization>
+      <Suspense fallback="Customizing theme">
+        <Personalization expression="today's day is 31 and today's month is 10" fallback={false}>
+          {(isHalloween: boolean) => isHalloween
+            ? <ThemeProvider theme={halloweenTheme}>
+              <CoffeeOrderProvider>
+                <DeliveryProvider>
+                  <Router />
+                </DeliveryProvider>
+              </CoffeeOrderProvider>
+              <GlobalStyle />
+            </ThemeProvider>
+            : <ThemeProvider theme={defaultTheme}>
+              <CoffeeOrderProvider>
+                <DeliveryProvider>
+                  <Router />
+                </DeliveryProvider>
+              </CoffeeOrderProvider>
+              <GlobalStyle />
+            </ThemeProvider>
+          }
+        </Personalization>
+      </Suspense>
     </BrowserRouter>
   )
 }

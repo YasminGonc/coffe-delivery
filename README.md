@@ -17,49 +17,99 @@ A aplicação conta com um total de 3 páginas: listagem de produtos, carrinho d
 
 ## Onde a Croct foi aplicada?
 
-## Construção
+1. Seleção do tema da aplicação baseado na data comemorativa
 
-O Coffe Delivery foi criado com React e TypeScript, sendo a base do projeto criada com o Vite. A navegação entre as páginas (Home, Carrinho e Pedido Finalizado) foi possível através do uso da biblioteca React Router Dom, os formulários foram tratados com as bibliotecas React Hook Form e Zod integradas. A estilização foi feita com Styled-components.
+Para definição do tema da aplicação foi empregado o recurso theme do Styled-Components, sendo possível variar o tema (cores) da aplicação. É um recurso bastante utilizado quando há temas dark e light, por exemplo, no entanto eles são alternados a partir da ação de click do usuário.
+Baseado nessa ideia de alternância de temas, utilizei os recursos de personalização da Croct para fazer a mudança entre os temas da aplicação (default e halloween). O tema halloween será aplicado exclusivamente no dia 31/10, essa troca será feita de forma automática.
+<br> 
+Para que essa ação fosse possível, dentro do arquivo App.tsx, por volta do componente ThemeProvider foi utilizado o componente `Personalization` com a expressão de validação: "today's day is 31 and today's month is 10". Essa expressão retornará um valor booleano, para o caso verdadeiro o tema de halloween será aplicado, caso seja falso o tema padrão será aplicado.
+A mesma ideia pode ser adaptada para outras datas comemorativas como Natal, Dia dos Namorados e Dia das Mães, bastando trocar a expressão de validação e o tema.
 <br>
-Foram implandadas como melhoria da aplicação: responsividade, aplicando o conceito de mobile first, e consumo da API Via CEP.
-Os dados do formulário referentes ao endereço estão sendo preenchidas automaticamente a partir do consumo da API Via CEP, desta forma, basta o usuário informar o CEP da entrega que as informações de setor, rua, bairro e cidade já são preenchidas.
+Cabe destacar que lógica semelhante, com a mesma expressão de validação, foi utilizada no componente Header, mais especificamente na imagem de logo. Quando o tema da aplicação é alternado a imagem de logo deve ser alterada por conta do contraste entre as cores.
+<br>
+Optou-se por utilizar o atributo fallback com o valor booleano falso, para caso a validação falhar a aplicação como um todo não ser comprometida.
+<br>
+Código do componente App:
 
-### Novidades no projeto
+```typescript
+<Suspense fallback="Customizing theme">
+    <Personalization expression="today's day is 31 and today's month is 10" fallback={false}>
+        {(isHalloween: boolean) => isHalloween
+            ? <ThemeProvider theme={halloweenTheme}>
+              <CoffeeOrderProvider>
+                <DeliveryProvider>
+                  <Router />
+                </DeliveryProvider>
+              </CoffeeOrderProvider>
+              <GlobalStyle />
+            </ThemeProvider>
+            : <ThemeProvider theme={defaultTheme}>
+              <CoffeeOrderProvider>
+                <DeliveryProvider>
+                  <Router />
+                </DeliveryProvider>
+              </CoffeeOrderProvider>
+              <GlobalStyle />
+            </ThemeProvider>
+        }
+    </Personalization>
+</Suspense>
+```
+2. Frases personalizadas baseadas na localização do usuário
 
-- Consumo da API Via Cep;
-- Responsividade (mobile-first).
+No banner da página inicial frases customizadas são apresentadas ao usuário baseada na sua localização aproximada. Desta forma, a frase que anteriormente era "Encontre o café perfeito para qualquer hora do dia" passa a ser "Está na correria de São Paulo? Encontre o café perfeito para qualquer hora do dia".
+A alternância entre as frases foi feita com o componente `Personalization` e a expressão de validação "location's city", que retorna uma string com o nome da cidade.
+<br>
+Algo semelhante foi feito no componente Header com a intenção de apresentar a localização do usuário, como mostra a imagem abaixo.
 
-### Principais ferramentas utilizadas
+<img src="GHAssets/header-location.png" width="600">
 
-- Construído com [Vite](https://vitejs.dev/);
-- Estilização com [Styled-components](https://styled-components.com/);
-- [React Router](https://reactrouter.com/en/main) para criação das rotas da aplicação;
-- [React Hook Form](https://react-hook-form.com/) para lidar com formulários;
-- [Zod](https://github.com/colinhacks/zod) para validação de formulários;
-- Dados de endereço do usuário foram obtidos através do consumo da API [Via CEP](https://viacep.com.br/).
+A lógica de apresentação desse item em tela foi um pouco diferente do utilizado no banner. A variável location foi definida a partir do valor da expressão "location's city", utilizando o hook `useEvaluation`. A tipagem dessa variável é baseada na resposta da expressão avaliada pelo hook, neste caso pode ser uma string com o nome da cidade ou null caso não seja possível obter a localização. 
+A apresentação do item de localização da tela só acontece se a variável location for uma string.
+<br>
+No código ficou da seguinte forma:
+
+```typescript
+const location = useEvaluation<string | null>("location's city");
+
+(...)
+
+{location &&
+    <LocationContainer>
+        <MapIcon weight='fill' />
+        <span>{location}</span>
+    </LocationContainer>
+}
+```
+3. Sugestões de cafés baseado no dia da semana caso o carrinho esteja vazio
+
+Caso o usuário acesse o carrinho de compras sem nenhum café selecionado, sugestões serão apresentadas baseado no dia da semana. 
+Para realizar esse tipo de personalização optei por criar o componente React `EmptyCartPersonalization` e utilizar o hook `usePersonalization`. A expressão avaliada foi "today´s weekday", sendo a tipagem de retorno uma string, neste caso números entre 0 e 6, onde 0 é referente a domingo, 1 segunda e assim por diante. O retorno desse componente são as sugestões de cafés, diferentes para cada dia da semana.
+<br>
+O componente `EmptyCartPersonalization` foi utilizado dentro do componente `Cart` e envelopado pelo `Suspense` do React.
+<br>
+Destaco que para este caso a utilização do componente `Slot` teria maiores vantagens, deixando o código menos verboso já que para a solução adotada foi necessário escrever um código para cada dia da semana. O `Slot` não foi utilizado pois é necessário a configuração de um id específico para essa funcionalidade, o app ID fornecido possui o id configurado para apresentar diferentes expressões baseado na persona do usuário, não cabendo para a aplicação construída.
+
+4. Alert indicando se há cupons de desconto no dia
+
+Na finalização do pedido o usuário pode verificar a existência de cupons de desconto a partir do clique em um botão. Ao clicar no botão em questão uma função será disparada, essa função irá avaliar qual o dia da semana e retornar um alert se há ou não descontos. 
+<br>
+Tal função foi criada com o apoio do useCallback do React e o hook useCroct, que dá acesso as funções da lib de JS. 
 
 ## Layout da aplicação
 
 <img src="GHAssets/home.png" width="600">
 <img src="GHAssets/cart-blank.png" width="600">
 <img src="GHAssets/cart-fill.png" width="600">
+<img src="GHAssets/alert.png" width="600">
 <img src="GHAssets/success.png" width="600">
+<img src="GHAssets/halloween-theme.png" width="600">
 
-## Deploy da aplicação
+## Executar a aplicação
 
-"Em breve"
-<br>
-Caso prefira abrir a aplicação no localhost basta digitar o comando `npm run dev`
-
-## Vídeo da aplicação
-
-[Coffe Delivery](https://www.loom.com/share/8af0eda9dc9a425e8407fc2f2e9712e7)
+A aplicação pode ser executada em localhost a partir do comando `npm run dev`
 
 ## Dados complementares
 
 - Autor: [Yasmin](https://www.linkedin.com/in/yasmin-goncalves/)
-
-
-## About
-
-Coffee Delivery is a coffee sales e-commerce, developed for the challenge of the selection process for Customer Service Engineer at Croct.
+- Challenge by Croct.

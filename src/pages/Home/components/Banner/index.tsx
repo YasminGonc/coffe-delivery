@@ -10,7 +10,7 @@ export function Banner() {
             <div>
                 <Personalization expression="location's city">
                     {(city: string) => city
-                        ? <h1>Está na correia de {city}? Encontre o café perfeito para qualquer hora do dia</h1>
+                        ? <h1>Está na correria de {city}? Encontre o café perfeito para qualquer hora do dia</h1>
                         : <h1>Encontre o café perfeito para qualquer hora do dia</h1>}
                 </Personalization>
                 <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>

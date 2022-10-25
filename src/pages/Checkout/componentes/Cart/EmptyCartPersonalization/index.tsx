@@ -1,11 +1,7 @@
-import croct from '@croct/plug';
-import { useCroct, useEvaluation } from '@croct/plug-react';
-import { useCallback, useContext } from 'react';
+import { useEvaluation } from '@croct/plug-react';
+import { useContext } from 'react';
 import { CoffeeOrderContext } from '../../../../../context/CoffeeOrderContext';
 import { AddToCart, ImageContainer, PersonalizationContainer } from './styles';
-
-croct.plug({ appId: '00000000-0000-0000-0000-000000000000' });
-
 
 export function EmptyCartPersonalization() {
     const { coffeeOrderMenu, addCoffee } = useContext(CoffeeOrderContext);

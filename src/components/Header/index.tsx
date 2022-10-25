@@ -1,32 +1,42 @@
 import { CartIcon, CartNav, CartNavContainer, HeaderContainer, IconsContainer, LocationContainer, MapIcon, OrderAmountContainer } from './style'
 
 import Logo from '../../assets/logo.png'
+import HalloweenLogo from '../../assets/logo-halloween.png'
 import { NavLink } from 'react-router-dom'
-import { useContext } from 'react'
+import { Suspense, useContext } from 'react'
 import { CoffeeOrderContext } from '../../context/CoffeeOrderContext';
 
 import croct from '@croct/plug';
-import { useEvaluation } from '@croct/plug-react';
+import { Personalization, useEvaluation } from '@croct/plug-react';
 
-croct.plug({appId: '00000000-0000-0000-0000-000000000000'});
+croct.plug({ appId: '00000000-0000-0000-0000-000000000000' });
 
 interface HeaderProps {
     hiddenCart?: boolean;
 }
 
 export function Header({ hiddenCart }: HeaderProps) {
-    const location = useEvaluation<string>("location's city");
-    
+    const location = useEvaluation<string | null>("location's city");
+
     const { orderQuantity, showOrderQuantity } = useContext(CoffeeOrderContext);
- 
-    return(
+
+    return (
         <HeaderContainer>
-            <NavLink to='/' title='Home'>
-                <img src={Logo} />
-            </NavLink>
+            <Suspense fallback="Customizing logo theme">
+                <Personalization expression="today's day is 31 and today's month is 10" fallback={false}>
+                    {(isHalloween: boolean) => isHalloween
+                        ? <NavLink to='/' title='Home'>
+                            <img src={HalloweenLogo} />
+                        </NavLink>
+                        : <NavLink to='/' title='Home'>
+                            <img src={Logo} />
+                        </NavLink>
+                    }
+                </Personalization>
+            </Suspense>
 
             <IconsContainer>
-                {location && 
+                {location &&
                     <LocationContainer>
                         <MapIcon weight='fill' />
                         <span>{location}</span>
@@ -42,7 +52,7 @@ export function Header({ hiddenCart }: HeaderProps) {
                     </CartNav>
                 </CartNavContainer>
             </IconsContainer>
-            
+
         </HeaderContainer>
     )
 }

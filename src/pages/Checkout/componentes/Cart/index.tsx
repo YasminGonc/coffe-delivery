@@ -1,13 +1,10 @@
-import { AddRemove, ButtonRemove, CartContainer, CoffeeName, ConfirmOrder, ItemContainer, ItensContainer, NoOrder, Price, Total, TotalContainer, TotalItem } from './style'
+import { AddRemove, ButtonRemove, CartContainer, CoffeeName, ConfirmOrder, DiscountButton, ItemContainer, ItensContainer, NoOrder, Price, Total, TotalContainer, TotalItem } from './style'
 
 import { Trash, Coffee } from 'phosphor-react'
 import { Suspense, useCallback, useContext } from 'react'
 import { CoffeeOrderContext } from '../../../../context/CoffeeOrderContext'
-import croct from '@croct/plug';
 import { EmptyCartPersonalization } from './EmptyCartPersonalization';
 import { Personalization, useCroct } from '@croct/plug-react';
-
-croct.plug({ appId: '00000000-0000-0000-0000-000000000000' });
 
 export function Cart() {
     const { coffeeOrder, coffeeBill, removeCoffeeFromOrder } = useContext(CoffeeOrderContext);
@@ -19,18 +16,22 @@ export function Cart() {
 
     const croct = useCroct();
 
-    const setDate = useCallback(() => {
+    const setDiscount = useCallback(() => {
         croct.evaluate("today's weekday")
             .then(date => {
                 if (date == '1') {
-                    alert('Segunda é dia de frete grátis');
+                    alert('Segunda é dia de frete grátis. Cupom já aplicado no carrinho.');
+                }
+                else {
+                    alert('Nenhum cupom disponível no momento');
                 }
             });
     }, [croct]);
 
-    // if (hasOrders) {
-    //     setDate();
-    // }
+    function handleDiscountButton(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault();
+        setDiscount();
+    }
 
     return (
         <CartContainer>
@@ -67,6 +68,9 @@ export function Cart() {
                 {hasOrders &&
                     <>
                         <TotalContainer>
+                            <DiscountButton onClick={(e) => handleDiscountButton(e)}>
+                                Verificar cupons de desconto
+                            </DiscountButton>
                             <TotalItem>
                                 <p>Total de itens</p>
                                 <p>R$ {coffeeBill.toFixed(2).toString().replace('.', ',')}</p>
