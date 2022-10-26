@@ -11,7 +11,7 @@ A aplicação conta com um total de 3 páginas: listagem de produtos, carrinho d
 - Aplicação construída com [Vite](https://vitejs.dev/);
 - [Styled-components](https://styled-components.com/) para estilização;
 - Criação das rotas com [React Router](https://reactrouter.com/en/main);
-- Validação do formulário de entrega com a biblioteca [Zod](https://github.com/colinhacks/zod);
+- Validação do formulário de entrega com a biblioteca [Zod](https://github.com/colinhacks/zod) e [React Hook Form](https://react-hook-form.com/);
 - API [Via CEP](https://viacep.com.br/) para preencher informações de entrega baseado no CEP fornecido;
 - [Croct Plug React](https://github.com/croct-tech/plug-react) para personalizações.
 
