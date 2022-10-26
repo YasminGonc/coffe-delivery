@@ -32,18 +32,18 @@ Código do componente App:
 
 ```typescript
 <Suspense fallback="Customizing theme">
-        <Personalization expression="today's day is 31 and today's month is 10" fallback={false}>
-          {(isHalloween: boolean) =>
-            <ThemeProvider theme={isHalloween ? halloweenTheme : defaultTheme}>
-              <CoffeeOrderProvider>
-                <DeliveryProvider>
-                  <Router />
-                </DeliveryProvider>
-              </CoffeeOrderProvider>
-              <GlobalStyle />
-            </ThemeProvider>}
-        </Personalization>
-      </Suspense>
+  <Personalization expression="today's day is 31 and today's month is 10" fallback={false}>
+    {(isHalloween: boolean) =>
+      <ThemeProvider theme={isHalloween ? halloweenTheme : defaultTheme}>
+         <CoffeeOrderProvider>
+            <DeliveryProvider>
+                <Router />
+            </DeliveryProvider>
+          </CoffeeOrderProvider>
+           <GlobalStyle />
+        </ThemeProvider>}
+  </Personalization>
+  </Suspense>
 ```
 2. Frases personalizadas baseadas na localização do usuário
 
