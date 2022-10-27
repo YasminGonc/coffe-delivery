@@ -1,6 +1,6 @@
 ## Quick Start Feedback
 
-The Quich Start was fundamental to understand how Croct’s lib works. One of the main points of the library is the use of CQL language. The playground environment provides a good place to test some sentences, create new ones, and understand the error if the expression tested was invalid.  Using the playground I was able to test the validation expression used in the project, such as “today’s weekday” and “today’s day is 31 and today’s month is 10”.
+The Quick Start was fundamental to understand how Croct’s lib works. One of the main points of the library is the use of CQL language. The playground environment provides a good place to test some sentences, create new ones, and understand the error if the expression tested was invalid.  Using the playground I was able to test the validation expression used in the project, such as “today’s weekday” and “today’s day is 31 and today’s month is 10”.
 <br>
 With the CodePen, it was possible to test the examples given and understand some lib features. I took some insights to use in the project with these examples.
 <br>
