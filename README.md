@@ -24,7 +24,7 @@ Based on alternate themes idea, I used the Croct personalization features to alt
 For this action to be possible, on App.tsx file the `Personalization` component was used with the validation expression: “today’s day is 31 and today’s month is 10”. This promise returns a boolean value, if it is true the Halloween theme is applied. 
 The same idea can be adapted to other commemorative dates such as Christmas and Mother’s Day.
 <br>
-It is worth highlighting that the same validation expression was used in the Header component to replace the logo image.
+It is worth highlighting, that the same validation expression was used in the Header component to replace the logo image.
 <br>
 The fallback attribute was used with the negative Boolean value, to prevent application malfunction.
 <br>
