@@ -11,7 +11,7 @@ The project has 3 pages: home to list the products, shopping cart, and completed
 - Built with [Vite](https://vitejs.dev/);
 - [Styled-components](https://styled-components.com/) for styles;
 - [React Router](https://reactrouter.com/en/main) to create the router between the pages;
-- [Zod](https://github.com/colinhacks/zod) to form validation;
+- [Zod](https://github.com/colinhacks/zod) and [React Hook Form](https://react-hook-form.com/) to form validation;
 - API [Via CEP](https://viacep.com.br/) to bring informations related to user's address;
 - [Croct Plug React](https://github.com/croct-tech/plug-react) to customize some itens.
 
