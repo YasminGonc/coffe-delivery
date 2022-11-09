@@ -2,7 +2,7 @@
 
 ## About
 
-Coffee Delivery is a website focused on selling coffee. This application was developed for the challenge of the Customer Service Engineer job at Croct.
+Coffee Delivery is a website focused on selling coffee. This application was developed for the challenge of the Customer Success Engineer job at Croct.
 <br>
 The project has 3 pages: home to list the products, shopping cart, and completed order. Furthermore, the app gains some personalization features with Croct’s React lib.
 
